@@ -3,53 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BeMiray Farmer - Gestion Avicole Intégrée</title>
+    <title>BeMiray Farmer - Plateforme IT Avicole</title>
     <style>
         :root {
-            --primary: #d35400;
-            --secondary: #f39c12;
-            --dark: #2c3e50;
-            --light: #fdfefe;
-            --bg-card: #fef9e7;
-            --accent-green: #27ae60;
+            --bemiray-green: #27ae60;
+            --bemiray-green-dark: #1e8449;
+            --bemiray-orange: #d35400;
+            --bemiray-dark: #2c3e50;
+            --bemiray-light: #f4f9f4;
+            --card-bg: #ffffff;
         }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: #f4f6f7; color: #333; }
         
-        /* Navigation / En-tête */
-        header { background: white; border-bottom: 3px solid var(--secondary); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        body { 
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+            margin: 0; 
+            padding: 0; 
+            background-color: var(--bemiray-light); 
+            color: #333; 
+        }
+        
+        header { 
+            background: white; 
+            border-bottom: 4px solid var(--bemiray-green); 
+            padding: 15px 30px; 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06); 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+        }
+        
         .brand { display: flex; align-items: center; gap: 15px; }
-        .official-logo { width: 55px; height: 55px; object-fit: cover; border-radius: 50%; border: 2px solid var(--secondary); }
-        .brand h2 { margin: 0; color: var(--dark); font-size: 20px; }
-        .brand span { font-size: 12px; color: #7f8c8d; font-style: italic; }
+        .official-logo { width: 60px; height: 60px; object-fit: cover; border-radius: 50%; border: 2px solid var(--bemiray-green); }
+        .brand-text h2 { margin: 0; color: var(--bemiray-dark); font-size: 20px; letter-spacing: 0.5px; }
+        .slogan-it { margin: 3px 0 0 0; font-size: 11px; color: var(--bemiray-green-dark); font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
         
-        nav a { margin-left: 20px; text-decoration: none; color: var(--dark); font-weight: 600; font-size: 14px; transition: color 0.3s; }
-        nav a:hover { color: var(--primary); }
+        nav a { margin-left: 20px; text-decoration: none; color: var(--bemiray-dark); font-weight: 600; font-size: 14px; transition: color 0.3s; }
+        nav a:hover { color: var(--bemiray-green); }
 
         .container { max-width: 1100px; margin: 30px auto; padding: 0 20px; }
         
-        /* Sections modules */
-        .module-section { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 30px; border-top: 6px solid var(--primary); }
-        .module-section h2 { color: var(--primary); margin-top: 0; border-bottom: 2px solid #fad7a0; padding-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        .module-section { 
+            background: var(--card-bg); 
+            padding: 30px; 
+            border-radius: 12px; 
+            box-shadow: 0 4px 15px rgba(39, 174, 96, 0.08); 
+            margin-bottom: 30px; 
+            border-top: 6px solid var(--bemiray-green); 
+        }
+        
+        .module-section h2 { 
+            color: var(--bemiray-green-dark); 
+            margin-top: 0; 
+            border-bottom: 2px solid #e8f8f0; 
+            padding-bottom: 10px; 
+            display: flex; 
+            align-items: center; 
+            gap: 10px; 
+            font-size: 1.3em;
+        }
         
         .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .form-group { display: flex; flex-direction: column; margin-bottom: 15px; }
-        label { font-weight: 600; color: var(--dark); margin-bottom: 5px; font-size: 0.9em; }
-        input, select { padding: 10px; border: 1px solid #bdc3c7; border-radius: 6px; font-size: 1em; background-color: #fafafa; }
-        input:focus, select:focus { border-color: var(--primary); outline: none; background-color: #fff; }
+        .form-group { display: flex; flex-direction: column; margin-bottom: 12px; }
+        label { font-weight: 600; color: var(--bemiray-dark); margin-bottom: 5px; font-size: 0.9em; }
+        input, select { padding: 9px; border: 1px solid #dcdde1; border-radius: 6px; font-size: 0.95em; background-color: #fafbfc; }
+        input:focus, select:focus { border-color: var(--bemiray-green); outline: none; background-color: #fff; }
         
-        .btn { background: var(--primary); color: white; border: none; padding: 12px 20px; border-radius: 6px; font-weight: bold; cursor: pointer; width: 100%; transition: background 0.3s; }
-        .btn:hover { background: #b94000; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; font-size: 0.9em; }
+        th, td { border: 1px solid #e2e8f0; padding: 8px 10px; text-align: left; }
+        th { background-color: #f0f7f4; color: var(--bemiray-green-dark); }
+        
+        .btn { 
+            background: var(--bemiray-green); 
+            color: white; 
+            border: none; 
+            padding: 12px 20px; 
+            border-radius: 6px; 
+            font-weight: bold; 
+            cursor: pointer; 
+            width: 100%; 
+            transition: background 0.3s; 
+            margin-top: 10px;
+        }
+        .btn:hover { background: var(--bemiray-green-dark); }
+        .btn-secondary { background: var(--bemiray-orange); }
+        .btn-secondary:hover { background: #b94000; }
 
-        .result-box { margin-top: 20px; background: var(--bg-card); padding: 15px; border-radius: 8px; border: 1px solid var(--secondary); font-size: 15px; }
-        .highlight { font-weight: bold; color: var(--accent-green); }
+        .result-box { 
+            margin-top: 20px; 
+            background: #f4fcf6; 
+            padding: 15px; 
+            border-radius: 8px; 
+            border: 1px solid #a3e4d7; 
+            font-size: 14px; 
+            color: var(--bemiray-dark);
+        }
+        .highlight { font-weight: bold; color: var(--bemiray-orange); }
         
-        footer { text-align: center; padding: 20px; color: #7f8c8d; font-size: 13px; }
+        /* Indicateurs de statut nutritionnel */
+        .status-badge {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 6px;
+            font-weight: bold;
+            font-size: 0.9em;
+            text-align: center;
+        }
+        .status-ok { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+        .status-warn { background-color: #fff3cd; color: #856404; border: 1px solid #ffeeba; }
+        
+        footer { text-align: center; padding: 20px; color: #7f8c8d; font-size: 13px; border-top: 1px solid #e2e8f0; margin-top: 40px; }
 
         @media (max-width: 768px) {
             .grid-2 { grid-template-columns: 1fr; }
             header { flex-direction: column; gap: 10px; text-align: center; }
-            nav { margin-top: 5px; }
-            nav a { margin: 0 10px; }
+            nav { margin-top: 5px; nav a { margin: 0 10px; } }
         }
     </style>
 </head>
@@ -58,9 +128,9 @@
 <header>
     <div class="brand">
         <img src="logo-bemiray.jpg" alt="Logo BeMiray Farmer" class="official-logo">
-        <div>
+        <div class="brand-text">
             <h2>BeMiray Farmer</h2>
-            <span>Ambohitraina Ilafy</span>
+            <p class="slogan-it">L'outil IT indispensable à l'élevage moderne de poules pondeuses</p>
         </div>
     </div>
     <nav>
@@ -72,29 +142,81 @@
 
 <div class="container">
 
-    <!-- MODULE 1 : ALIMENTATION -->
+    <!-- MODULE 1 : ALIMENTATION & FORMULATION (BASE 100 KG) -->
     <section id="alimentation" class="module-section">
-        <h2>🌽 Module 1 : Alimentation & Formulation de Rations</h2>
-        <p>Gérez vos matières premières locales (Maïs, Son, Concentrés LFL) et calculez vos coûts de revient au kilo.</p>
+        <h2>🌽 Module 1 : Alimentation & Formulation sur une base de 100 kg</h2>
+        <p>Gérez, ajoutez vos ingrédients un par un et suivez les rapports nutritionnels par rapport aux normes pondeuses.</p>
         
         <div class="grid-2">
             <div>
-                <div class="form-group">
-                    <label>Type d'aliment / Phase :</label>
-                    <select id="typeAliment">
-                        <option value="pondeuse_pic">Pondeuse - Phase de Production (2200 Ar/kg)</option>
-                        <option value="chair_croissance">Chair - Croissance (2400 Ar/kg)</option>
-                    </select>
+                <h3>1. Ingrédients & Quantités (pour 100 kg)</h3>
+                <table id="tableIngredients">
+                    <thead>
+                        <tr>
+                            <th>Ingrédient</th>
+                            <th>Quantité (kg)</th>
+                            <th>Prix (Ar/kg)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Maïs concassé</td>
+                            <td><input type="number" class="ing-qte" value="55" data-prot="9" data-ener="3300" oninput="calculerFormulation()"></td>
+                            <td><input type="number" class="ing-prix" value="1800" oninput="calculerFormulation()"></td>
+                        </tr>
+                        <tr>
+                            <td>Son de riz</td>
+                            <td><input type="number" class="ing-qte" value="20" data-prot="12" data-ener="2500" oninput="calculerFormulation()"></td>
+                            <td><input type="number" class="ing-prix" value="1100" oninput="calculerFormulation()"></td>
+                        </tr>
+                        <tr>
+                            <td>Tourteau de soja</td>
+                            <td><input type="number" class="ing-qte" value="15" data-prot="44" data-ener="3800" oninput="calculerFormulation()"></td>
+                            <td><input type="number" class="ing-prix" value="3500" oninput="calculerFormulation()"></td>
+                        </tr>
+                        <tr>
+                            <td>Concentré LFL 1430 (Ponte)</td>
+                            <td><input type="number" class="ing-qte" value="7" data-prot="38" data-ener="2900" oninput="calculerFormulation()"></td>
+                            <td><input type="number" class="ing-prix" value="4500" oninput="calculerFormulation()"></td>
+                        </tr>
+                        <tr>
+                            <td>Coquillage / Calcaire</td>
+                            <td><input type="number" class="ing-qte" value="2" data-prot="0" data-ener="0" oninput="calculerFormulation()"></td>
+                            <td><input type="number" class="ing-prix" value="800" oninput="calculerFormulation()"></td>
+                        </tr>
+                        <tr>
+                            <td>Sel</td>
+                            <td><input type="number" class="ing-qte" value="1" data-prot="0" data-ener="0" oninput="calculerFormulation()"></td>
+                            <td><input type="number" class="ing-prix" value="1500" oninput="calculerFormulation()"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <h3 style="margin-top: 20px;">Ajouter un nouvel ingrédient</h3>
+                <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 10px;">
+                    <input type="text" id="nouveauNom" placeholder="Nom (ex: Blé...)">
+                    <input type="number" id="nouveauQte" placeholder="Kg/100" value="0">
+                    <input type="number" id="nouveauPrix" placeholder="Ar/kg" value="0">
                 </div>
-                <div class="form-group">
-                    <label>Quantité d'aliment consommée (kg) :</label>
-                    <input type="number" id="consoAlimentKg" value="50" oninput="calculerAliment()">
+                <!-- Champs cachés pour attribuer des valeurs par défaut lors de l'ajout -->
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 8px;">
+                    <input type="number" id="nouveauProt" placeholder="Protéines (%) ex: 10" value="10">
+                    <input type="number" id="nouveauEner" placeholder="Énergie (kcal/kg) ex: 3000" value="3000">
                 </div>
-                <button class="btn" onclick="calculerAliment()">Calculer le coût total</button>
+                <button class="btn btn-secondary" onclick="ajouterIngredient()">Ajouter à la liste</button>
             </div>
-            <div style="display: flex; align-items: center;">
-                <div id="resAliment" class="result-box" style="width: 100%;">
-                    <strong>Coût total de l'aliment :</strong> <span class="highlight">0 Ar</span>
+
+            <div>
+                <h3>2. Synthèse & Analyse par rapport aux Normes</h3>
+                <div class="result-box" id="resFormulation">
+                    <div><strong>Poids total formulé :</strong> <span id="resPoidsTotal" class="highlight">100 kg</span></div>
+                    <div style="margin-top: 8px;"><strong>Coût total du mélange :</strong> <span id="resCoutTotal" class="highlight">0 Ar</span></div>
+                    <div style="margin-top: 8px;"><strong>Coût de revient :</strong> <span id="resCoutKg" class="highlight">0 Ar / kg</span></div>
+                    <hr style="margin: 12px 0; border: 0; border-top: 1px solid #a3e4d7;">
+                    <div><strong>Protéines Brutes :</strong> <span id="resProt" class="highlight">0 %</span> (Norme cible : 16% - 18%)</div>
+                    <div style="margin-top: 8px;"><strong>Énergie Métabolisable :</strong> <span id="resEner" class="highlight">0 kcal/kg</span> (Norme cible : 2750 - 2850)</div>
+                    
+                    <div id="statusNutr"></div>
                 </div>
             </div>
         </div>
@@ -103,8 +225,6 @@
     <!-- MODULE 2 : POULES PONDEUSES -->
     <section id="pondeuses" class="module-section">
         <h2>🥚 Module 2 : Gestion Technique & Production Pondeuses</h2>
-        <p>Suivi de l'effectif, calcul du taux de ponte journalier et conversion en plateaux de 30 œufs.</p>
-        
         <div class="grid-2">
             <div>
                 <div class="form-group">
@@ -133,12 +253,10 @@
     <!-- MODULE 3 : POULETS DE CHAIR -->
     <section id="chair" class="module-section">
         <h2>🍗 Module 3 : Poulets de Chair (Croissance, GMQ & IC)</h2>
-        <p>Évaluez les performances de croissance, le Gain Moyen Quotidien et l'Indice de Consommation.</p>
-        
         <div class="grid-2">
             <div>
                 <div class="form-group">
-                    <label>Poids initial moyen (g) (ex: à J0) :</label>
+                    <label>Poids initial moyen (g) :</label>
                     <input type="number" id="chair_poids_init" value="40">
                 </div>
                 <div class="form-group">
@@ -157,7 +275,7 @@
             </div>
             <div style="display: flex; align-items: center;">
                 <div id="resChair" class="result-box" style="width: 100%;">
-                    <div><strong>GMQ (Gain Moyen Quotidien) :</strong> <span id="res_gmq" class="highlight">0 g/jour</span></div>
+                    <div><strong>GMQ :</strong> <span id="res_gmq" class="highlight">0 g/jour</span></div>
                     <div style="margin-top: 10px;"><strong>Indice de Consommation (IC) :</strong> <span id="res_ic" class="highlight">0</span></div>
                 </div>
             </div>
@@ -167,20 +285,94 @@
 </div>
 
 <footer>
-    <p>&copy; 2026 BeMiray Farmer - Plateforme de gestion avicole & agropastorale</p>
+    <p>&copy; 2026 BeMiray Farmer - Ambohitraina Ilafy, Antananarivo | Propulsé par une solution IT agropastorale</p>
 </footer>
 
 <script>
-// Script Module Alimentation
-function calculerAliment() {
-    let type = document.getElementById('typeAliment').value;
-    let kg = parseFloat(document.getElementById('consoAlimentKg').value) || 0;
-    let prixKg = type === 'pondeuse_pic' ? 2200 : 2400;
-    let total = kg * prixKg;
-    document.querySelector('#resAliment .highlight').innerText = total.toLocaleString('fr-FR') + ' Ar';
+function calculerFormulation() {
+    let qtes = document.querySelectorAll('.ing-qte');
+    let prixs = document.querySelectorAll('.ing-prix');
+    
+    let poidsTotal = 0;
+    let coutTotal = 0;
+    let sommeProtPond = 0;
+    let sommeEnerPond = 0;
+    
+    for(let i = 0; i < qtes.length; i++) {
+        let qte = parseFloat(qtes[i].value) || 0;
+        let prix = parseFloat(prixs[i].value) || 0;
+        let prot = parseFloat(qtes[i].getAttribute('data-prot')) || 0;
+        let ener = parseFloat(qtes[i].getAttribute('data-ener')) || 0;
+        
+        poidsTotal += qte;
+        coutTotal += qte * prix;
+        sommeProtPond += qte * prot;
+        sommeEnerPond += qte * ener;
+    }
+    
+    let coutKg = poidsTotal > 0 ? coutTotal / poidsTotal : 0;
+    let tauxProt = poidsTotal > 0 ? sommeProtPond / poidsTotal : 0;
+    let moyenneEner = poidsTotal > 0 ? sommeEnerPond / poidsTotal : 0;
+    
+    document.getElementById('resPoidsTotal').innerText = poidsTotal.toFixed(1) + ' kg';
+    document.getElementById('resCoutTotal').innerText = coutTotal.toLocaleString('fr-FR') + ' Ar';
+    document.getElementById('resCoutKg').innerText = coutKg.toLocaleString('fr-FR', {maximumFractionDigits: 2}) + ' Ar / kg';
+    document.getElementById('resProt').innerText = tauxProt.toFixed(1) + ' %';
+    document.getElementById('resEner').innerText = moyenneEner.toFixed(0) + ' kcal/kg';
+    
+    // Évaluation automatique par rapport aux normes
+    let statusDiv = document.getElementById('statusNutr');
+    let alertHtml = '';
+    
+    if (Math.abs(poidsTotal - 100) > 0.1) {
+        alertHtml += `<div class="status-badge status-warn">⚠️ Attention : Le poids total est de ${poidsTotal.toFixed(1)} kg (Visez exactement 100 kg).</div>`;
+    } else {
+        let pbOk = (tauxProt >= 16 && tauxProt <= 18.5);
+        let emOk = (moyenneEner >= 2700 && moyenneEner <= 2900);
+        
+        if (pbOk && emOk) {
+            alertHtml += `<div class="status-badge status-ok">✅ Excellent ! Le mélange est parfaitement équilibré pour des pondeuses.</div>`;
+        } else {
+            if (!pbOk) {
+                alertHtml += `<div class="status-badge status-warn">⚠️ Ajustez les protéines (Cible : 16% - 18%). Actuel : ${tauxProt.toFixed(1)}%</div>`;
+            }
+            if (!emOk) {
+                alertHtml += `<div class="status-badge status-warn">⚠️ Ajustez l'énergie (Cible : 2750 - 2850 kcal). Actuel : ${moyenneEner.toFixed(0)} kcal</div>`;
+            }
+        }
+    }
+    statusDiv.innerHTML = alertHtml;
 }
 
-// Script Module Pondeuses
+function ajouterIngredient() {
+    let nom = document.getElementById('nouveauNom').value.trim();
+    let qte = document.getElementById('nouveauQte').value;
+    let prix = document.getElementById('nouveauPrix').value;
+    let prot = document.getElementById('nouveauProt').value;
+    let ener = document.getElementById('nouveauEner').value;
+    
+    if(!nom) {
+        alert("Veuillez saisir un nom d'ingrédient.");
+        return;
+    }
+    
+    let tbody = document.querySelector('#tableIngredients tbody');
+    let tr = document.createElement('tr');
+    tr.innerHTML = `
+        <td>${nom}</td>
+        <td><input type="number" class="ing-qte" value="${qte}" data-prot="${prot}" data-ener="${ener}" oninput="calculerFormulation()"></td>
+        <td><input type="number" class="ing-prix" value="${prix}" oninput="calculerFormulation()"></td>
+    `;
+    tbody.appendChild(tr);
+    
+    // Réinitialiser les champs de saisie
+    document.getElementById('nouveauNom').value = '';
+    document.getElementById('nouveauQte').value = '0';
+    document.getElementById('nouveauPrix').value = '0';
+    
+    calculerFormulation();
+}
+
 function calculerPondeuses() {
     let eff = parseFloat(document.getElementById('pond_effectif').value) || 1;
     let oeufs = parseFloat(document.getElementById('pond_oeufs').value) || 0;
@@ -196,7 +388,6 @@ function calculerPondeuses() {
     document.getElementById('res_ca').innerText = ca.toLocaleString('fr-FR') + ' Ar';
 }
 
-// Script Module Poulet de Chair
 function calculerChair() {
     let pInit = parseFloat(document.getElementById('chair_poids_init').value) || 0;
     let pFinal = parseFloat(document.getElementById('chair_poids_final').value) || 0;
@@ -211,8 +402,7 @@ function calculerChair() {
     document.getElementById('res_ic').innerText = ic.toFixed(2);
 }
 
-// Lancer les calculs initiaux au chargement
-calculerAliment();
+calculerFormulation();
 calculerPondeuses();
 calculerChair();
 </script>
