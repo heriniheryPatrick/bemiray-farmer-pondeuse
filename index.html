@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bemiray Farmer - Suivi Atelier Poules Pondeuses</title>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 20px; background-color: #fdfefe; color: #333; }
+        .container { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 6px 15px rgba(0,0,0,0.08); max-width: 900px; margin: auto; border-top: 8px solid #d35400; }
+        
+        /* En-tête professionnel Bemiray Farmer */
+        .brand-header { text-align: center; margin-bottom: 25px; border-bottom: 2px solid #f39c12; padding-bottom: 20px; }
+        .logo-badge { 
+            background: linear-gradient(135deg, #f39c12, #d35400); 
+            color: white; 
+            font-size: 24px; 
+            font-weight: bold; 
+            padding: 12px 25px; 
+            border-radius: 30px; 
+            display: inline-block; 
+            margin-bottom: 12px;
+            box-shadow: 0 4px 10px rgba(211, 84, 0, 0.3);
+        }
+        h1 { color: #2c3e50; text-align: center; margin: 5px 0; font-size: 28px; }
+        .subtitle { text-align: center; color: #7f8c8d; font-style: italic; font-size: 16px; margin-top: 5px; }
+        
+        .section-title { color: #d35400; border-bottom: 2px solid #f39c12; padding-bottom: 6px; margin-top: 30px; margin-bottom: 15px; font-size: 1.15em; font-weight: bold; }
+        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .form-group { display: flex; flex-direction: column; }
+        label { font-weight: 600; color: #34495e; margin-bottom: 6px; font-size: 0.9em; }
+        input { padding: 10px; text-align: center; border: 1px solid #bdc3c7; border-radius: 6px; font-size: 1.05em; background-color: #fafafa; }
+        input:focus { border-color: #d35400; outline: none; background-color: #fff; }
+        
+        .results-box { margin-top: 35px; background: #fef9e7; padding: 25px; border-radius: 8px; border: 1px solid #f39c12; }
+        .result-item { font-size: 16px; margin-bottom: 12px; display: flex; justify-content: space-between; border-bottom: 1px dashed #fad7a0; padding-bottom: 8px; }
+        .highlight { font-weight: bold; color: #27ae60; }
+        .warning { color: #c0392b; font-weight: bold; }
+        
+        @media (max-width: 600px) {
+            .form-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="brand-header">
+        <div class="logo-badge">🐔 BEMIRAY FARMER 🥚</div>
+        <h1>Gestion Atelier Poules Pondeuses</h1>
+        <div class="subtitle">Tableau de bord de production avicole, collecte d'œufs et rentabilité</div>
+    </div>
+    
+    <div class="section-title">1. Saisie des données de production du jour</div>
+    <div class="form-grid">
+        <div class="form-group">
+            <label for="effectif_debut">Effectif initial de poules :</label>
+            <input type="number" id="effectif_debut" value="500" oninput="calculerTableauBord()">
+        </div>
+        <div class="form-group">
+            <label for="mortalite">Mortalité / Réforme du jour :</label>
+            <input type="number" id="mortalite" value="0" oninput="calculerTableauBord()">
+        </div>
+        <div class="form-group">
+            <label for="oeufs_bons">Œufs bons (vendables) :</label>
+            <input type="number" id="oeufs_bons" value="420" oninput="calculerTableauBord()">
+        </div>
+        <div class="form-group">
+            <label for="oeufs_casses">Œufs cassés / fêlés / sales :</label>
+            <input type="number" id="oeufs_casses" value="10" oninput="calculerTableauBord()">
+        </div>
+        <div class="form-group">
+            <label for="poids_oeuf">Poids moyen d'un œuf (g) :</label>
+            <input type="number" id="poids_oeuf" value="60" oninput="calculerTableauBord()">
+        </div>
+        <div class="form-group">
+            <label for="conso_indiv">Consommation / poule (g / jour) :</label>
+            <input type="number" id="conso_indiv" value="115" oninput="calculerTableauBord()">
+        </div>
+        <div class="form-group">
+            <label for="prix_aliment">Prix de l'aliment pondeuse (Ar / kg) :</label>
+            <input type="number" id="prix_aliment" value="2200" oninput="calculerTableauBord()">
+        </div>
+        <div class="form-group">
+            <label for="prix_plateau">Prix de vente d'un plateau (30 œufs) (Ar) :</label>
+            <input type="number" id="prix_plateau" value="18000" oninput="calculerTableauBord()">
+        </div>
+    </div>
+
+    <div class="results-box">
+        <div class="section-title" style="margin-top: 0; border-bottom: none; color: #b9770e;">Indicateurs Clés & Résultats Financiers</div>
+        
+        <div class="result-item">
+            <span>Effectif réel (après pertes) :</span>
+            <span id="res_effectif" class="highlight">500 poules</span>
+        </div>
+        <div class="result-item">
+            <span>Taux de ponte journalier :</span>
+            <span id="res_taux_ponte" class="highlight">0.00 %</span>
+        </div>
+        <div class="result-item">
+            <span>Production convertie en plateaux :</span>
+            <span id="res_plateaux">0 plateaux et 0 œufs</span>
+        </div>
+        <div class="result-item">
+            <span>Consommation totale d'aliment :</span>
+            <span id="res_conso_totale">0.00 kg</span>
+        </div>
+        <div class="result-item">
+            <span>Coût journalier de l'alimentation :</span>
+            <span id="res_cout_aliment" class="warning">0 Ar</span>
+        </div>
+        <div class="result-item">
+            <span>Chiffre d'affaires journalier (Vente œufs bons) :</span>
+            <span id="res_ca" class="highlight">0 Ar</span>
+        </div>
+        <div class="result-item" style="font-size: 18px; border-bottom: none; background: #fcf3cf; padding: 12px; border-radius: 6px; margin-top: 10px;">
+            <strong>Marge nette journalière estimée :</strong>
+            <span id="res_marge" style="font-weight: bold;">0 Ar</span>
+        </div>
+    </div>
+</div>
+
+<script>
+function calculerTableauBord() {
+    let effectifDebut = parseFloat(document.getElementById('effectif_debut').value) || 0;
+    let mortalite = parseFloat(document.getElementById('mortalite').value) || 0;
+    let oeufsBons = parseFloat(document.getElementById('oeufs_bons').value) || 0;
+    let oeufsCasses = parseFloat(document.getElementById('oeufs_casses').value) || 0;
+    let consoIndiv = parseFloat(document.getElementById('conso_indiv').value) || 0;
+    let prixAliment = parseFloat(document.getElementById('prix_aliment').value) || 0;
+    let prixPlateau = parseFloat(document.getElementById('prix_plateau').value) || 0;
+
+    let effectifActuel = Math.max(0, effectifDebut - mortalite);
+    let totalOeufsRecoltes = oeufsBons + oeufsCasses;
+
+    let tauxPonte = 0;
+    if (effectifActuel > 0) {
+        tauxPonte = (totalOeufsRecoltes / effectifActuel) * 100;
+    }
+
+    let nbPlateaux = Math.floor(oeufsBons / 30);
+    let resteOeufs = oeufsBons % 30;
+
+    let consoTotaleKg = (effectifActuel * consoIndiv) / 1000;
+    let coutAliment = consoTotaleKg * prixAliment;
+
+    let prixUnitaireOeuf = prixPlateau / 30;
+    let chiffreAffaires = oeufsBons * prixUnitaireOeuf;
+
+    let margeNette = chiffreAffaires - coutAliment;
+
+    document.getElementById('res_effectif').innerText = effectifActuel + ' poules';
+    document.getElementById('res_taux_ponte').innerText = tauxPonte.toFixed(2) + ' %';
+    document.getElementById('res_plateaux').innerText = nbPlateaux + ' plateau(x) et ' + resteOeufs + ' œuf(s)';
+    document.getElementById('res_conso_totale').innerText = consoTotaleKg.toFixed(2) + ' kg';
+    document.getElementById('res_cout_aliment').innerText = coutAliment.toLocaleString('fr-FR') + ' Ar';
+    document.getElementById('res_ca').innerText = chiffreAffaires.toLocaleString('fr-FR') + ' Ar';
+    
+    let elMarge = document.getElementById('res_marge');
+    elMarge.innerText = margeNette.toLocaleString('fr-FR') + ' Ar';
+    elMarge.style.color = margeNette >= 0 ? '#27ae60' : '#c0392b';
+}
+
+calculerTableauBord();
+</script>
+
+</body>
+</html>
