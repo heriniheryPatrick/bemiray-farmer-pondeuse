@@ -3,165 +3,218 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bemiray Farmer - Suivi Atelier Poules Pondeuses</title>
+    <title>BeMiray Farmer - Gestion Avicole Intégrée</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 20px; background-color: #fdfefe; color: #333; }
-        .container { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 6px 15px rgba(0,0,0,0.08); max-width: 900px; margin: auto; border-top: 8px solid #d35400; }
-        
-        /* En-tête professionnel Bemiray Farmer */
-        .brand-header { text-align: center; margin-bottom: 25px; border-bottom: 2px solid #f39c12; padding-bottom: 20px; }
-        .logo-badge { 
-            background: linear-gradient(135deg, #f39c12, #d35400); 
-            color: white; 
-            font-size: 24px; 
-            font-weight: bold; 
-            padding: 12px 25px; 
-            border-radius: 30px; 
-            display: inline-block; 
-            margin-bottom: 12px;
-            box-shadow: 0 4px 10px rgba(211, 84, 0, 0.3);
+        :root {
+            --primary: #d35400;
+            --secondary: #f39c12;
+            --dark: #2c3e50;
+            --light: #fdfefe;
+            --bg-card: #fef9e7;
+            --accent-green: #27ae60;
         }
-        h1 { color: #2c3e50; text-align: center; margin: 5px 0; font-size: 28px; }
-        .subtitle { text-align: center; color: #7f8c8d; font-style: italic; font-size: 16px; margin-top: 5px; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; background-color: #f4f6f7; color: #333; }
         
-        .section-title { color: #d35400; border-bottom: 2px solid #f39c12; padding-bottom: 6px; margin-top: 30px; margin-bottom: 15px; font-size: 1.15em; font-weight: bold; }
-        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .form-group { display: flex; flex-direction: column; }
-        label { font-weight: 600; color: #34495e; margin-bottom: 6px; font-size: 0.9em; }
-        input { padding: 10px; text-align: center; border: 1px solid #bdc3c7; border-radius: 6px; font-size: 1.05em; background-color: #fafafa; }
-        input:focus { border-color: #d35400; outline: none; background-color: #fff; }
+        /* Navigation / En-tête */
+        header { background: white; border-bottom: 3px solid var(--secondary); padding: 15px 30px; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.05); position: sticky; top: 0; z-index: 1000; }
+        .brand { display: flex; align-items: center; gap: 15px; }
+        .official-logo { width: 55px; height: 55px; object-fit: cover; border-radius: 50%; border: 2px solid var(--secondary); }
+        .brand h2 { margin: 0; color: var(--dark); font-size: 20px; }
+        .brand span { font-size: 12px; color: #7f8c8d; font-style: italic; }
         
-        .results-box { margin-top: 35px; background: #fef9e7; padding: 25px; border-radius: 8px; border: 1px solid #f39c12; }
-        .result-item { font-size: 16px; margin-bottom: 12px; display: flex; justify-content: space-between; border-bottom: 1px dashed #fad7a0; padding-bottom: 8px; }
-        .highlight { font-weight: bold; color: #27ae60; }
-        .warning { color: #c0392b; font-weight: bold; }
+        nav a { margin-left: 20px; text-decoration: none; color: var(--dark); font-weight: 600; font-size: 14px; transition: color 0.3s; }
+        nav a:hover { color: var(--primary); }
+
+        .container { max-width: 1100px; margin: 30px auto; padding: 0 20px; }
         
-        @media (max-width: 600px) {
-            .form-grid { grid-template-columns: 1fr; }
+        /* Sections modules */
+        .module-section { background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); margin-bottom: 30px; border-top: 6px solid var(--primary); }
+        .module-section h2 { color: var(--primary); margin-top: 0; border-bottom: 2px solid #fad7a0; padding-bottom: 10px; display: flex; align-items: center; gap: 10px; }
+        
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .form-group { display: flex; flex-direction: column; margin-bottom: 15px; }
+        label { font-weight: 600; color: var(--dark); margin-bottom: 5px; font-size: 0.9em; }
+        input, select { padding: 10px; border: 1px solid #bdc3c7; border-radius: 6px; font-size: 1em; background-color: #fafafa; }
+        input:focus, select:focus { border-color: var(--primary); outline: none; background-color: #fff; }
+        
+        .btn { background: var(--primary); color: white; border: none; padding: 12px 20px; border-radius: 6px; font-weight: bold; cursor: pointer; width: 100%; transition: background 0.3s; }
+        .btn:hover { background: #b94000; }
+
+        .result-box { margin-top: 20px; background: var(--bg-card); padding: 15px; border-radius: 8px; border: 1px solid var(--secondary); font-size: 15px; }
+        .highlight { font-weight: bold; color: var(--accent-green); }
+        
+        footer { text-align: center; padding: 20px; color: #7f8c8d; font-size: 13px; }
+
+        @media (max-width: 768px) {
+            .grid-2 { grid-template-columns: 1fr; }
+            header { flex-direction: column; gap: 10px; text-align: center; }
+            nav { margin-top: 5px; }
+            nav a { margin: 0 10px; }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div class="brand-header">
-        <div class="logo-badge">🐔 BEMIRAY FARMER 🥚</div>
-        <h1>Gestion Atelier Poules Pondeuses</h1>
-        <div class="subtitle">Tableau de bord de production avicole, collecte d'œufs et rentabilité</div>
-    </div>
-    
-    <div class="section-title">1. Saisie des données de production du jour</div>
-    <div class="form-grid">
-        <div class="form-group">
-            <label for="effectif_debut">Effectif initial de poules :</label>
-            <input type="number" id="effectif_debut" value="500" oninput="calculerTableauBord()">
-        </div>
-        <div class="form-group">
-            <label for="mortalite">Mortalité / Réforme du jour :</label>
-            <input type="number" id="mortalite" value="0" oninput="calculerTableauBord()">
-        </div>
-        <div class="form-group">
-            <label for="oeufs_bons">Œufs bons (vendables) :</label>
-            <input type="number" id="oeufs_bons" value="420" oninput="calculerTableauBord()">
-        </div>
-        <div class="form-group">
-            <label for="oeufs_casses">Œufs cassés / fêlés / sales :</label>
-            <input type="number" id="oeufs_casses" value="10" oninput="calculerTableauBord()">
-        </div>
-        <div class="form-group">
-            <label for="poids_oeuf">Poids moyen d'un œuf (g) :</label>
-            <input type="number" id="poids_oeuf" value="60" oninput="calculerTableauBord()">
-        </div>
-        <div class="form-group">
-            <label for="conso_indiv">Consommation / poule (g / jour) :</label>
-            <input type="number" id="conso_indiv" value="115" oninput="calculerTableauBord()">
-        </div>
-        <div class="form-group">
-            <label for="prix_aliment">Prix de l'aliment pondeuse (Ar / kg) :</label>
-            <input type="number" id="prix_aliment" value="2200" oninput="calculerTableauBord()">
-        </div>
-        <div class="form-group">
-            <label for="prix_plateau">Prix de vente d'un plateau (30 œufs) (Ar) :</label>
-            <input type="number" id="prix_plateau" value="18000" oninput="calculerTableauBord()">
+<header>
+    <div class="brand">
+        <img src="logo-bemiray.jpg" alt="Logo BeMiray Farmer" class="official-logo">
+        <div>
+            <h2>BeMiray Farmer</h2>
+            <span>Ambohitraina Ilafy</span>
         </div>
     </div>
+    <nav>
+        <a href="#alimentation">Alimentation</a>
+        <a href="#pondeuses">Poules Pondeuses</a>
+        <a href="#chair">Poulets de Chair</a>
+    </nav>
+</header>
 
-    <div class="results-box">
-        <div class="section-title" style="margin-top: 0; border-bottom: none; color: #b9770e;">Indicateurs Clés & Résultats Financiers</div>
+<div class="container">
+
+    <!-- MODULE 1 : ALIMENTATION -->
+    <section id="alimentation" class="module-section">
+        <h2>🌽 Module 1 : Alimentation & Formulation de Rations</h2>
+        <p>Gérez vos matières premières locales (Maïs, Son, Concentrés LFL) et calculez vos coûts de revient au kilo.</p>
         
-        <div class="result-item">
-            <span>Effectif réel (après pertes) :</span>
-            <span id="res_effectif" class="highlight">500 poules</span>
+        <div class="grid-2">
+            <div>
+                <div class="form-group">
+                    <label>Type d'aliment / Phase :</label>
+                    <select id="typeAliment">
+                        <option value="pondeuse_pic">Pondeuse - Phase de Production (2200 Ar/kg)</option>
+                        <option value="chair_croissance">Chair - Croissance (2400 Ar/kg)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Quantité d'aliment consommée (kg) :</label>
+                    <input type="number" id="consoAlimentKg" value="50" oninput="calculerAliment()">
+                </div>
+                <button class="btn" onclick="calculerAliment()">Calculer le coût total</button>
+            </div>
+            <div style="display: flex; align-items: center;">
+                <div id="resAliment" class="result-box" style="width: 100%;">
+                    <strong>Coût total de l'aliment :</strong> <span class="highlight">0 Ar</span>
+                </div>
+            </div>
         </div>
-        <div class="result-item">
-            <span>Taux de ponte journalier :</span>
-            <span id="res_taux_ponte" class="highlight">0.00 %</span>
+    </section>
+
+    <!-- MODULE 2 : POULES PONDEUSES -->
+    <section id="pondeuses" class="module-section">
+        <h2>🥚 Module 2 : Gestion Technique & Production Pondeuses</h2>
+        <p>Suivi de l'effectif, calcul du taux de ponte journalier et conversion en plateaux de 30 œufs.</p>
+        
+        <div class="grid-2">
+            <div>
+                <div class="form-group">
+                    <label>Effectif actuel de poules :</label>
+                    <input type="number" id="pond_effectif" value="500" oninput="calculerPondeuses()">
+                </div>
+                <div class="form-group">
+                    <label>Œufs récoltés (bons + fêlés) :</label>
+                    <input type="number" id="pond_oeufs" value="430" oninput="calculerPondeuses()">
+                </div>
+                <div class="form-group">
+                    <label>Prix de vente d'un plateau (30 œufs) (Ar) :</label>
+                    <input type="number" id="pond_prix_plateau" value="18000" oninput="calculerPondeuses()">
+                </div>
+            </div>
+            <div>
+                <div id="resPondeuses" class="result-box">
+                    <div><strong>Taux de ponte :</strong> <span id="res_taux" class="highlight">0 %</span></div>
+                    <div style="margin-top: 10px;"><strong>Production :</strong> <span id="res_plateaux">0 plateaux</span></div>
+                    <div style="margin-top: 10px;"><strong>Chiffre d'affaires brut :</strong> <span id="res_ca" class="highlight">0 Ar</span></div>
+                </div>
+            </div>
         </div>
-        <div class="result-item">
-            <span>Production convertie en plateaux :</span>
-            <span id="res_plateaux">0 plateaux et 0 œufs</span>
+    </section>
+
+    <!-- MODULE 3 : POULETS DE CHAIR -->
+    <section id="chair" class="module-section">
+        <h2>🍗 Module 3 : Poulets de Chair (Croissance, GMQ & IC)</h2>
+        <p>Évaluez les performances de croissance, le Gain Moyen Quotidien et l'Indice de Consommation.</p>
+        
+        <div class="grid-2">
+            <div>
+                <div class="form-group">
+                    <label>Poids initial moyen (g) (ex: à J0) :</label>
+                    <input type="number" id="chair_poids_init" value="40">
+                </div>
+                <div class="form-group">
+                    <label>Poids final moyen (g) :</label>
+                    <input type="number" id="chair_poids_final" value="2100">
+                </div>
+                <div class="form-group">
+                    <label>Durée de l'élevage (jours) :</label>
+                    <input type="number" id="chair_jours" value="42">
+                </div>
+                <div class="form-group">
+                    <label>Aliment total consommé par sujet (kg) :</label>
+                    <input type="number" id="chair_aliment_sujet" value="3.8">
+                </div>
+                <button class="btn" onclick="calculerChair()">Calculer GMQ & IC</button>
+            </div>
+            <div style="display: flex; align-items: center;">
+                <div id="resChair" class="result-box" style="width: 100%;">
+                    <div><strong>GMQ (Gain Moyen Quotidien) :</strong> <span id="res_gmq" class="highlight">0 g/jour</span></div>
+                    <div style="margin-top: 10px;"><strong>Indice de Consommation (IC) :</strong> <span id="res_ic" class="highlight">0</span></div>
+                </div>
+            </div>
         </div>
-        <div class="result-item">
-            <span>Consommation totale d'aliment :</span>
-            <span id="res_conso_totale">0.00 kg</span>
-        </div>
-        <div class="result-item">
-            <span>Coût journalier de l'alimentation :</span>
-            <span id="res_cout_aliment" class="warning">0 Ar</span>
-        </div>
-        <div class="result-item">
-            <span>Chiffre d'affaires journalier (Vente œufs bons) :</span>
-            <span id="res_ca" class="highlight">0 Ar</span>
-        </div>
-        <div class="result-item" style="font-size: 18px; border-bottom: none; background: #fcf3cf; padding: 12px; border-radius: 6px; margin-top: 10px;">
-            <strong>Marge nette journalière estimée :</strong>
-            <span id="res_marge" style="font-weight: bold;">0 Ar</span>
-        </div>
-    </div>
+    </section>
+
 </div>
 
+<footer>
+    <p>&copy; 2026 BeMiray Farmer - Plateforme de gestion avicole & agropastorale</p>
+</footer>
+
 <script>
-function calculerTableauBord() {
-    let effectifDebut = parseFloat(document.getElementById('effectif_debut').value) || 0;
-    let mortalite = parseFloat(document.getElementById('mortalite').value) || 0;
-    let oeufsBons = parseFloat(document.getElementById('oeufs_bons').value) || 0;
-    let oeufsCasses = parseFloat(document.getElementById('oeufs_casses').value) || 0;
-    let consoIndiv = parseFloat(document.getElementById('conso_indiv').value) || 0;
-    let prixAliment = parseFloat(document.getElementById('prix_aliment').value) || 0;
-    let prixPlateau = parseFloat(document.getElementById('prix_plateau').value) || 0;
-
-    let effectifActuel = Math.max(0, effectifDebut - mortalite);
-    let totalOeufsRecoltes = oeufsBons + oeufsCasses;
-
-    let tauxPonte = 0;
-    if (effectifActuel > 0) {
-        tauxPonte = (totalOeufsRecoltes / effectifActuel) * 100;
-    }
-
-    let nbPlateaux = Math.floor(oeufsBons / 30);
-    let resteOeufs = oeufsBons % 30;
-
-    let consoTotaleKg = (effectifActuel * consoIndiv) / 1000;
-    let coutAliment = consoTotaleKg * prixAliment;
-
-    let prixUnitaireOeuf = prixPlateau / 30;
-    let chiffreAffaires = oeufsBons * prixUnitaireOeuf;
-
-    let margeNette = chiffreAffaires - coutAliment;
-
-    document.getElementById('res_effectif').innerText = effectifActuel + ' poules';
-    document.getElementById('res_taux_ponte').innerText = tauxPonte.toFixed(2) + ' %';
-    document.getElementById('res_plateaux').innerText = nbPlateaux + ' plateau(x) et ' + resteOeufs + ' œuf(s)';
-    document.getElementById('res_conso_totale').innerText = consoTotaleKg.toFixed(2) + ' kg';
-    document.getElementById('res_cout_aliment').innerText = coutAliment.toLocaleString('fr-FR') + ' Ar';
-    document.getElementById('res_ca').innerText = chiffreAffaires.toLocaleString('fr-FR') + ' Ar';
-    
-    let elMarge = document.getElementById('res_marge');
-    elMarge.innerText = margeNette.toLocaleString('fr-FR') + ' Ar';
-    elMarge.style.color = margeNette >= 0 ? '#27ae60' : '#c0392b';
+// Script Module Alimentation
+function calculerAliment() {
+    let type = document.getElementById('typeAliment').value;
+    let kg = parseFloat(document.getElementById('consoAlimentKg').value) || 0;
+    let prixKg = type === 'pondeuse_pic' ? 2200 : 2400;
+    let total = kg * prixKg;
+    document.querySelector('#resAliment .highlight').innerText = total.toLocaleString('fr-FR') + ' Ar';
 }
 
-calculerTableauBord();
+// Script Module Pondeuses
+function calculerPondeuses() {
+    let eff = parseFloat(document.getElementById('pond_effectif').value) || 1;
+    let oeufs = parseFloat(document.getElementById('pond_oeufs').value) || 0;
+    let prixPlat = parseFloat(document.getElementById('pond_prix_plateau').value) || 0;
+    
+    let taux = (oeufs / eff) * 100;
+    let plateaux = Math.floor(oeufs / 30);
+    let reste = oeufs % 30;
+    let ca = (oeufs / 30) * prixPlat;
+
+    document.getElementById('res_taux').innerText = taux.toFixed(2) + ' %';
+    document.getElementById('res_plateaux').innerText = plateaux + ' plateau(x) et ' + reste + ' œuf(s)';
+    document.getElementById('res_ca').innerText = ca.toLocaleString('fr-FR') + ' Ar';
+}
+
+// Script Module Poulet de Chair
+function calculerChair() {
+    let pInit = parseFloat(document.getElementById('chair_poids_init').value) || 0;
+    let pFinal = parseFloat(document.getElementById('chair_poids_final').value) || 0;
+    let jours = parseFloat(document.getElementById('chair_jours').value) || 1;
+    let alSujet = parseFloat(document.getElementById('chair_aliment_sujet').value) || 0;
+
+    let ganTotal = pFinal - pInit;
+    let gmq = ganTotal / jours;
+    let ic = alSujet / (ganTotal / 1000);
+
+    document.getElementById('res_gmq').innerText = gmq.toFixed(1) + ' g / jour';
+    document.getElementById('res_ic').innerText = ic.toFixed(2);
+}
+
+// Lancer les calculs initiaux au chargement
+calculerAliment();
+calculerPondeuses();
+calculerChair();
 </script>
 
 </body>
