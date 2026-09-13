@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pondeuses (500 Sujets) | BeMiray Farmer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        farmGreen: '#16a34a',
+                        farmDarkGreen: '#14532d',
+                        farmOrange: '#f97316',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col">
+
+    <!-- En-tête -->
+    <header class="bg-farmDarkGreen text-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-6 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center space-x-3 mb-4 md:mb-0">
+                <span class="text-3xl">🐔</span>
+                <div>
+                    <h1 class="text-2xl font-bold tracking-wide">BE-IRAY FARMER</h1>
+                    <p class="text-xs text-farmOrange font-semibold tracking-wider uppercase">Module Pondeuses (500 Sujets)</p>
+                </div>
+            </div>
+            <nav class="flex space-x-6 text-sm font-medium">
+                <a href="index.html" class="hover:text-farmOrange transition">Accueil</a>
+                <a href="alimentation.html" class="hover:text-farmOrange transition">Alimentation & Nutrition</a>
+                <a href="pondeuses.html" class="text-farmOrange text-white transition">Pondeuses (500 Sujets)</a>
+                <a href="chair.html" class="hover:text-farmOrange transition">Poulets de Chair</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- En-tête de page -->
+    <section class="bg-slate-900 text-white py-12 px-4 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-30">
+            <img src="https://images.unsplash.com/photo-1599814594770-b1d69d4c9423?auto=format&fit=crop&w=1920&q=80" alt="Pondeuses" class="w-full h-full object-cover">
+        </div>
+        <div class="relative max-w-5xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Suivi Technique & Économique (500 Pondeuses)</h2>
+            <p class="text-slate-200 max-w-2xl mx-auto">Paramètres localisés en Ariary (MGA) basés sur les standards de performance (Taux de ponte de référence : 75%[cite: 1]).</p>
+        </div>
+    </section>
+
+    <!-- Contenu principal -->
+    <main class="max-w-6xl mx-auto px-4 py-12 flex-grow">
+        
+        <!-- Indicateurs clés en MGA -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+            <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-farmGreen">
+                <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Investissement Initial</span>
+                <h3 class="text-2xl font-bold text-farmDarkGreen mt-2">2 805 000 MGA</h3>
+                <p class="text-xs text-slate-500 mt-1">Bâtiments, équipements & matériel</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-farmOrange">
+                <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Charges 24 Mois</span>
+                <h3 class="text-2xl font-bold text-farmOrange mt-2">6 795 000 MGA</h3>
+                <p class="text-xs text-slate-500 mt-1">Dont ~78,6% pour l'alimentation</p>
+            </div>
+            <div class="bg-white p-6 rounded-xl shadow-md border-t-4 border-emerald-600">
+                <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Marge Brute Estimée</span>
+                <h3 class="text-2xl font-bold text-emerald-700 mt-2">2 033 511 MGA</h3>
+                <p class="text-xs text-slate-500 mt-1">Ratio Produits / Charges : 1,3</p>
+            </div>
+        </div>
+
+        <!-- Détails de production quotidienne -->
+        <div class="bg-white rounded-xl shadow-md p-6 md:p-8 mb-8 border border-slate-100">
+            <h3 class="text-2xl font-bold text-farmDarkGreen mb-4">Objectifs de Production Journalière (500 Sujets)</h3>
+            <ul class="space-y-3 text-slate-700">
+                <li class="flex items-center"><span class="text-farmGreen font-bold mr-2">✔</span> <strong>Effectif de référence :</strong> 500 pondeuses vivantes</li>
+                <li class="flex items-center"><span class="text-farmGreen font-bold mr-2">✔</span> <strong>Taux de ponte idéal ($\ge$ 85%) :</strong> ~425 œufs / jour</li>
+                <li class="flex items-center"><span class="text-farmGreen font-bold mr-2">✔</span> <strong>Taux de ponte satisfaisant (75%)[cite: 1] :</strong> ~330 à 337 œufs / jour (~11 alvéoles de 30 œufs)</li>
+                <li class="flex items-center"><span class="text-amber-600 font-bold mr-2">⚠</span> <strong>Taux d'alerte ($\le$ 60%) :</strong> En dessous de 300 œufs/jour (vérifier l'alimentation et la prophylaxie)</li>
+            </ul>
+        </div>
+
+        <div class="text-center">
+            <a href="index.html" class="inline-block bg-slate-800 hover:bg-slate-900 text-white font-semibold py-2 px-6 rounded-lg transition">← Retour à l'accueil</a>
+        </div>
+    </main>
+
+    <footer class="bg-slate-800 text-slate-400 py-6 border-t border-slate-700 text-center text-sm">
+        <p>&copy; 2026 BE-IRAY FARMER (Madagascar). Module Pondeuses.</p>
+    </footer>
+</body>
+</html>
