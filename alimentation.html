@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alimentation & Nutrition | BeMiray Farmer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        farmGreen: '#16a34a',
+                        farmDarkGreen: '#14532d',
+                        farmOrange: '#f97316',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col">
+
+    <!-- En-tête -->
+    <header class="bg-farmDarkGreen text-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-6 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center space-x-3 mb-4 md:mb-0">
+                <span class="text-3xl">🐔</span>
+                <div>
+                    <h1 class="text-2xl font-bold tracking-wide">BE-IRAY FARMER</h1>
+                    <p class="text-xs text-farmOrange font-semibold tracking-wider uppercase">Module Nutrition & Rations</p>
+                </div>
+            </div>
+            <nav class="flex space-x-6 text-sm font-medium">
+                <a href="index.html" class="hover:text-farmOrange transition">Accueil</a>
+                <a href="alimentation.html" class="text-farmOrange hover:text-white transition">Alimentation & Nutrition</a>
+                <a href="pondeuses.html" class="hover:text-farmOrange transition">Pondeuses (500 Sujets)</a>
+                <a href="chair.html" class="hover:text-farmOrange transition">Poulets de Chair</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- En-tête de page -->
+    <section class="bg-slate-900 text-white py-12 px-4 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-30">
+            <img src="https://images.unsplash.com/photo-1516467508483-a7212febe31a?auto=format&fit=crop&w=1920&q=80" alt="Alimentation" class="w-full h-full object-cover">
+        </div>
+        <div class="relative max-w-5xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Gestion des Formulations & Besoins Nutritionnels</h2>
+            <p class="text-slate-200 max-w-2xl mx-auto">Maîtrisez les apports énergétiques (2750-2850 kcal/kg) et protéiques (16-18%) pour optimiser la production et réduire les coûts grâce aux provendes locales.</p>
+        </div>
+    </section>
+
+    <!-- Contenu principal -->
+    <main class="max-w-6xl mx-auto px-4 py-12 flex-grow">
+        
+        <!-- Formulation type pour 1 Tonne (Provende locale) -->
+        <div class="bg-white rounded-xl shadow-md p-6 md:p-8 mb-8 border border-slate-100">
+            <h3 class="text-2xl font-bold text-farmDarkGreen mb-4 flex items-center">
+                <span class="mr-3">🌾</span> Recette Standard de Provende Locale (1 Tonne - 3ème Âge / Pondeuses)
+            </h3>
+            <p class="text-slate-600 mb-6 text-sm">Formulation économique validée permettant de réaliser d'importantes économies par rapport aux aliments industriels importés :</p>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
+                <div class="bg-orange-50 border border-orange-200 p-4 rounded-lg text-center">
+                    <span class="block text-2xl font-bold text-farmOrange">12 Sacs</span>
+                    <span class="text-sm text-slate-700">de 25 kg de Concentré (Layers)</span>
+                </div>
+                <div class="bg-green-50 border border-green-200 p-4 rounded-lg text-center">
+                    <span class="block text-2xl font-bold text-farmGreen">8 Sacs</span>
+                    <span class="text-sm text-slate-700">de 50 kg de Son de Blé</span>
+                </div>
+                <div class="bg-amber-50 border border-amber-200 p-4 rounded-lg text-center">
+                    <span class="block text-2xl font-bold text-amber-700">3 Sacs</span>
+                    <span class="text-sm text-slate-700">de 100 kg de Maïs écrasé</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Plan d'alimentation indicatif -->
+        <div class="bg-white rounded-xl shadow-md p-6 md:p-8 border border-slate-100">
+            <h3 class="text-2xl font-bold text-farmDarkGreen mb-4">Plan d'Alimentation Journalier (Repères par sujet)</h3>
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse text-sm">
+                    <thead>
+                        <tr class="bg-slate-100 text-slate-700">
+                            <th class="p-3 border-b">Phase / Âge</th>
+                            <th class="p-3 border-b">Type d'Aliment / Provende</th>
+                            <th class="p-3 border-b">Consommation indicative par sujet / jour</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100">
+                        <tr>
+                            <td class="p-3 font-semibold">0 à 6 semaines</td>
+                            <td class="p-3">Provende Starter / 1er Âge</td>
+                            <td class="p-3 text-farmGreen font-medium">12,5 g à 35 g / jour</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-semibold">6 à 20 semaines</td>
+                            <td class="p-3">Provende Croissance / 2ème Âge</td>
+                            <td class="p-3 text-farmGreen font-medium">40 g à 100 g / jour</td>
+                        </tr>
+                        <tr>
+                            <td class="p-3 font-semibold">20 semaines à 24 mois</td>
+                            <td class="p-3">Provende Layers / 3ème Âge (Ponte)</td>
+                            <td class="p-3 text-farmGreen font-medium">100 g / jour</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="mt-8 text-center">
+            <a href="index.html" class="inline-block bg-slate-800 hover:bg-slate-900 text-white font-semibold py-2 px-6 rounded-lg transition">← Retour à l'accueil</a>
+        </div>
+    </main>
+
+    <footer class="bg-slate-800 text-slate-400 py-6 border-t border-slate-700 text-center text-sm">
+        <p>&copy; 2026 BE-IRAY FARMER (Madagascar). Module Nutrition.</p>
+    </footer>
+</body>
+</html>

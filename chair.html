@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Poulets de Chair (GMQ & IC) | BeMiray Farmer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        farmGreen: '#16a34a',
+                        farmDarkGreen: '#14532d',
+                        farmOrange: '#f97316',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans min-h-screen flex flex-col">
+
+    <!-- En-tête -->
+    <header class="bg-farmDarkGreen text-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-6 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center space-x-3 mb-4 md:mb-0">
+                <span class="text-3xl">🐔</span>
+                <div>
+                    <h1 class="text-2xl font-bold tracking-wide">BE-IRAY FARMER</h1>
+                    <p class="text-xs text-farmOrange font-semibold tracking-wider uppercase">Module Poulets de Chair</p>
+                </div>
+            </div>
+            <nav class="flex space-x-6 text-sm font-medium">
+                <a href="index.html" class="hover:text-farmOrange transition">Accueil</a>
+                <a href="alimentation.html" class="hover:text-farmOrange transition">Alimentation & Nutrition</a>
+                <a href="pondeuses.html" class="hover:text-farmOrange transition">Pondeuses (500 Sujets)</a>
+                <a href="chair.html" class="text-farmOrange text-white transition">Poulets de Chair</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- En-tête de page -->
+    <section class="bg-slate-900 text-white py-12 px-4 relative overflow-hidden">
+        <div class="absolute inset-0 opacity-30">
+            <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=1920&q=80" alt="Poulets de chair" class="w-full h-full object-cover">
+        </div>
+        <div class="relative max-w-5xl mx-auto text-center">
+            <h2 class="text-3xl md:text-4xl font-extrabold mb-4">Croissance, GMQ & Indice de Consommation (IC)</h2>
+            <p class="text-slate-200 max-w-2xl mx-auto">Suivi de la performance de croissance, conversion alimentaire et rentabilité de la production de chair.</p>
+        </div>
+    </section>
+
+    <!-- Contenu principal -->
+    <main class="max-w-6xl mx-auto px-4 py-12 flex-grow">
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+            <!-- GMQ -->
+            <div class="bg-white rounded-xl shadow-md p-6 md:p-8 border border-slate-100">
+                <h3 class="text-xl font-bold text-farmDarkGreen mb-3">Gain Moyen Quotidien (GMQ)</h3>
+                <p class="text-slate-600 text-sm mb-4">Le GMQ mesure la vitesse de croissance des sujets en grams par jour entre deux pesées :</p>
+                <div class="bg-slate-100 p-4 rounded-lg font-mono text-center text-sm font-bold text-slate-800 mb-4">
+                    GMQ = (Poids Final - Poids Initial) / Nombre de Jours
+                </div>
+                <p class="text-xs text-slate-500">Un bon suivi permet d'identifier rapidement un retard de croissance ou un problème sanitaire sous-jacent.</p>
+            </div>
+
+            <!-- IC -->
+            <div class="bg-white rounded-xl shadow-md p-6 md:p-8 border border-slate-100">
+                <h3 class="text-xl font-bold text-farmDarkGreen mb-3">Indice de Consommation (IC)</h3>
+                <p class="text-slate-600 text-sm mb-4">L'IC évalue l'efficacité de conversion de l'aliment consommé en poids vif :</p>
+                <div class="bg-slate-100 p-4 rounded-lg font-mono text-center text-sm font-bold text-slate-800 mb-4">
+                    IC = Quantité d'Aliment Consommé (kg) / Gain de Poids (kg)
+                </div>
+                <p class="text-xs text-slate-500">Plus l'indice est bas (ex: entre 1.6 et 1.9), plus l'élevage est rentable et performant sur le plan nutritionnel.</p>
+            </div>
+        </div>
+
+        <div class="text-center">
+            <a href="index.html" class="inline-block bg-slate-800 hover:bg-slate-900 text-white font-semibold py-2 px-6 rounded-lg transition">← Retour à l'accueil</a>
+        </div>
+    </main>
+
+    <footer class="bg-slate-800 text-slate-400 py-6 border-t border-slate-700 text-center text-sm">
+        <p>&copy; 2026 BE-IRAY FARMER (Madagascar). Module Poulets de Chair.</p>
+    </footer>
+</body>
+</html>
