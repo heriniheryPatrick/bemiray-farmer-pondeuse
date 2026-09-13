@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulation Professionnelle (Mode Pro) | BeMIRAY FARMER</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        farmGreen: '#16a34a',
+                        farmDarkGreen: '#14532d',
+                        farmOrange: '#f97316',
+                        farmBlue: '#0284c7',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-100 text-slate-800 font-sans min-h-screen flex flex-col">
+
+    <!-- En-tête -->
+    <header class="bg-farmDarkGreen text-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-6 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center space-x-3 mb-4 md:mb-0">
+                <img src="logo-bemiray.jpg" alt="Logo BeMiray Farmer" class="w-12 h-12 object-cover rounded-xl shadow-md">
+                <div>
+                    <h1 class="text-2xl font-bold tracking-wide">BeMIRAY FARMER</h1>
+                    <p class="text-xs text-farmBlue font-semibold tracking-wider uppercase">Mode Formulation Professionnelle</p>
+                </div>
+            </div>
+            <nav class="flex space-x-6 text-sm font-medium">
+                <a href="index.html" class="hover:text-farmOrange transition">Accueil</a>
+                <a href="calculateur-aliment.html" class="hover:text-farmOrange transition">Mode Économique</a>
+                <a href="calculateur-pro.html" class="text-farmBlue font-bold underline transition">Mode Pro</a>
+                <a href="pondeuses.html" class="hover:text-farmOrange transition">Pondeuses</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Corps principal -->
+    <main class="max-w-6xl mx-auto px-4 py-10 flex-grow w-full">
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200 p-6 md:p-10">
+            
+            <div class="mb-8 border-b pb-4 flex flex-col md:flex-row justify-between items-start md:items-center">
+                <div>
+                    <span class="bg-farmBlue text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">Nutrition Avancée & Équilibre Nutritif</span>
+                    <h2 class="text-3xl font-extrabold text-farmDarkGreen mt-2">Calculateur Professionnel de Provende</h2>
+                    <p class="text-slate-600 text-sm mt-1">Intégration des acides aminés, minéraux spécifiques et correcteurs pour une performance zootechnique maximale.</p>
+                </div>
+                <div class="mt-4 md:mt-0 bg-slate-50 border border-slate-200 p-3 rounded-xl text-right">
+                    <span class="text-xs text-slate-500 block">Objectif Ciblé :</span>
+                    <span class="font-bold text-farmDarkGreen text-sm">Pondeuse Phase de Ponte (18-20% PB)</span>
+                </div>
+            </div>
+
+            <!-- Formulaire de calcul Pro -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                
+                <!-- Tableau des ingrédients Avancés -->
+                <div class="lg:col-span-2 space-y-4">
+                    <h3 class="font-bold text-farmDarkGreen text-lg flex items-center">
+                        <span class="mr-2">🔬</span> Matrice Avancée des Matières Premières & Additifs (Base 100 kg)
+                    </h3>
+                    
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse text-xs md:text-sm">
+                            <thead>
+                                <tr class="bg-slate-100 text-slate-700">
+                                    <th class="p-2.5 border-b">Ingrédient Pro</th>
+                                    <th class="p-2.5 border-b">Quantité (kg)</th>
+                                    <th class="p-2.5 border-b">Prix Unit. (Ar/kg)</th>
+                                    <th class="p-2.5 border-b">Protéines Est. (%)</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100">
+                                <tr>
+                                    <td class="p-2.5 font-semibold">Maïs jaune concassé</td>
+                                    <td class="p-2.5"><input type="number" id="pro_q_mais" value="52" class="w-16 p-1 border rounded font-bold text-center text-farmBlue" oninput="calculerPro()"></td>
+                                    <td class="p-2.5"><input type="number" id="pro_p_mais" value="1800" class="w-24 p-1 border rounded text-center" oninput="calculerPro()"></td>
+                                    <td class="p-2.5 text-slate-500">~8.5%</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2.5 font-semibold">Tourteau de Soja</td>
+                                    <td class="p-2.5"><input type="number" id="pro_q_soja" value="22" class="w-16 p-1 border rounded font-bold text-center text-farmBlue" oninput="calculerPro()"></td>
+                                    <td class="p-2.5"><input type="number" id="pro_p_soja" value="3800" class="w-24 p-1 border rounded text-center" oninput="calculerPro()"></td>
+                                    <td class="p-2.5 text-slate-500">~44%</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2.5 font-semibold">Son de blé fin</td>
+                                    <td class="p-2.5"><input type="number" id="pro_q_son" value="10" class="w-16 p-1 border rounded font-bold text-center text-farmBlue" oninput="calculerPro()"></td>
+                                    <td class="p-2.5"><input type="number" id="pro_p_son" value="900" class="w-24 p-1 border rounded text-center" oninput="calculerPro()"></td>
+                                    <td class="p-2.5 text-slate-500">~15%</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2.5 font-semibold">Coquillage / Calcaire fin</td>
+                                    <td class="p-2.5"><input type="number" id="pro_q_coq" value="8" class="w-16 p-1 border rounded font-bold text-center text-farmBlue" oninput="calculerPro()"></td>
+                                    <td class="p-2.5"><input type="number" id="pro_p_coq" value="600" class="w-24 p-1 border rounded text-center" oninput="calculerPro()"></td>
+                                    <td class="p-2.5 text-slate-500">Calcium pur</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2.5 font-semibold">Phosphate Bicalcique</td>
+                                    <td class="p-2.5"><input type="number" id="pro_q_phos" value="2" class="w-16 p-1 border rounded font-bold text-center text-farmBlue" oninput="calculerPro()"></td>
+                                    <td class="p-2.5"><input type="number" id="pro_p_phos" value="6500" class="w-24 p-1 border rounded text-center" oninput="calculerPro()"></td>
+                                    <td class="p-2.5 text-slate-500">Phosphore</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2.5 font-semibold">Prémixe Pondeuse 5% (Vitamins/Min)</td>
+                                    <td class="p-2.5"><input type="number" id="pro_q_prem" value="5" class="w-16 p-1 border rounded font-bold text-center text-farmBlue" oninput="calculerPro()"></td>
+                                    <td class="p-2.5"><input type="number" id="pro_p_prem" value="7000" class="w-24 p-1 border rounded text-center" oninput="calculerPro()"></td>
+                                    <td class="p-2.5 text-slate-500">Vitamines</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-2.5 font-semibold">Sel & Acides Aminés (Méthionine/Lysine)</td>
+                                    <td class="p-2.5"><input type="number" id="pro_q_sel" value="1" class="w-16 p-1 border rounded font-bold text-center text-farmBlue" oninput="calculerPro()"></td>
+                                    <td class="p-2.5"><input type="number" id="pro_p_sel" value="3000" class="w-24 p-1 border rounded text-center" oninput="calculerPro()"></td>
+                                    <td class="p-2.5 text-slate-500">Équilibre</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="text-xs text-slate-500 italic">* Ajustez les quantités pour que le poids total atteigne exactement 100 kg.</p>
+                </div>
+
+                <!-- Panneau de Résultats Pro -->
+                <div class="bg-slate-900 text-white p-6 rounded-2xl flex flex-col justify-between shadow-lg">
+                    <div>
+                        <h3 class="text-lg font-bold text-farmBlue mb-4">📈 Indicateurs Techniques & Coûts</h3>
+                        <div class="space-y-4 text-sm">
+                            <div class="flex justify-between border-b border-slate-800 pb-2">
+                                <span class="text-slate-400">Poids Total Formulé :</span>
+                                <span id="pro_res_poids" class="font-bold">100 kg</span>
+                            </div>
+                            <div class="flex justify-between border-b border-slate-800 pb-2">
+                                <span class="text-slate-400">Taux Protéique Estimé :</span>
+                                <span id="pro_res_proteine" class="font-bold text-emerald-400">0 %</span>
+                            </div>
+                            <div class="flex justify-between border-b border-slate-800 pb-2">
+                                <span class="text-slate-400">Coût Total (100 kg) :</span>
+                                <span id="pro_res_total" class="font-bold text-farmOrange text-lg">0 Ar</span>
+                            </div>
+                            <div class="flex justify-between pb-2">
+                                <span class="text-slate-400">Coût de Revient Pro :</span>
+                                <span id="pro_res_kilo" class="font-bold text-farmBlue text-xl">0 Ar / kg</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-4 border-t border-slate-800 space-y-3">
+                        <button onclick="calculerPro()" class="w-full bg-farmBlue hover:bg-sky-600 text-white font-bold py-3 px-4 rounded-xl transition shadow">
+                            Mettre à jour l'Analyse Pro
+                        </button>
+                        <div class="flex justify-between text-xs text-slate-400">
+                            <a href="calculateur-aliment.html" class="hover:text-white underline">← Mode Économique</a>
+                            <a href="alimentation.html" class="hover:text-white underline">Guide Nutritionnel</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Pied de page -->
+    <footer class="bg-slate-800 text-slate-400 py-6 border-t border-slate-700 text-center text-sm">
+        <p>&copy; 2026 BeMIRAY FARMER (Madagascar). Module Formulation Professionnelle Avancée.</p>
+    </footer>
+
+    <!-- Script de Calcul Pro -->
+    <script>
+        function calculerPro() {
+            // Quantités
+            let q_mais = parseFloat(document.getElementById('pro_q_mais').value) || 0;
+            let q_soja = parseFloat(document.getElementById('pro_q_soja').value) || 0;
+            let q_son = parseFloat(document.getElementById('pro_q_son').value) || 0;
+            let q_coq = parseFloat(document.getElementById('pro_q_coq').value) || 0;
+            let q_phos = parseFloat(document.getElementById('pro_q_phos').value) || 0;
+            let q_prem = parseFloat(document.getElementById('pro_q_prem').value) || 0;
+            let q_sel = parseFloat(document.getElementById('pro_q_sel').value) || 0;
+
+            // Prix unitaires
+            let p_mais = parseFloat(document.getElementById('pro_p_mais').value) || 0;
+            let p_soja = parseFloat(document.getElementById('pro_p_soja').value) || 0;
+            let p_son = parseFloat(document.getElementById('pro_p_son').value) || 0;
+            let p_coq = parseFloat(document.getElementById('pro_p_coq').value) || 0;
+            let p_phos = parseFloat(document.getElementById('pro_p_phos').value) || 0;
+            let p_prem = parseFloat(document.getElementById('pro_p_prem').value) || 0;
+            let p_sel = parseFloat(document.getElementById('pro_p_sel').value) || 0;
+
+            // Calculs poids et coûts
+            let totalPoids = q_mais + q_soja + q_son + q_coq + q_phos + q_prem + q_sel;
+            let totalPrix = (q_mais * p_mais) + (q_soja * p_soja) + (q_son * p_son) + (q_coq * p_coq) + (q_phos * p_phos) + (q_prem * p_prem) + (q_sel * p_sel);
+            let prixKilo = totalPoids > 0 ? (totalPrix / totalPoids) : 0;
+
+            // Estimation grossière du taux protéique global (basée sur la contribution des ingrédients)
+            // Maïs ~8.5%, Soja ~44%, Son ~15%, autres ~0%
+            let totalProteinesKg = (q_mais * 0.085) + (q_soja * 0.44) + (q_son * 0.15);
+            let tauxProteine = totalPoids > 0 ? (totalProteinesKg / totalPoids) * 100 : 0;
+
+            // Affichage
+            document.getElementById('pro_res_poids').innerText = totalPoids + " kg";
+            document.getElementById('pro_res_proteine').innerText = tauxProteine.toFixed(1) + " %";
+            document.getElementById('pro_res_total').innerText = totalPrix.toLocaleString() + " Ar";
+            document.getElementById('pro_res_kilo').innerText = Math.round(prixKilo).toLocaleString() + " Ar / kg";
+        }
+
+        // Lancer au démarrage
+        window.onload = calculerPro;
+    </script>
+</body>
+</html>
