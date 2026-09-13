@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculateur de Formulation Économique | BeMIRAY FARMER</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        farmGreen: '#16a34a',
+                        farmDarkGreen: '#14532d',
+                        farmOrange: '#f97316',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-100 text-slate-800 font-sans min-h-screen flex flex-col">
+
+    <!-- En-tête -->
+    <header class="bg-farmDarkGreen text-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-6 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center space-x-3 mb-4 md:mb-0">
+                <img src="logo-bemiray.jpg" alt="Logo BeMiray Farmer" class="w-12 h-12 object-cover rounded-xl shadow-md">
+                <div>
+                    <h1 class="text-2xl font-bold tracking-wide">BeMIRAY FARMER</h1>
+                    <p class="text-xs text-farmOrange font-semibold tracking-wider uppercase">Calculateur de Coût & Formulation</p>
+                </div>
+            </div>
+            <nav class="flex space-x-6 text-sm font-medium">
+                <a href="index.html" class="hover:text-farmOrange transition">Accueil</a>
+                <a href="alimentation.html" class="hover:text-farmOrange transition">Alimentation & Nutrition</a>
+                <a href="calculateur-aliment.html" class="text-farmOrange font-bold transition">Calculateur Économique</a>
+                <a href="pondeuses.html" class="hover:text-farmOrange transition">Pondeuses</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Corps principal -->
+    <main class="max-w-5xl mx-auto px-4 py-10 flex-grow w-full">
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200 p-6 md:p-10">
+            
+            <div class="mb-8 border-b pb-4">
+                <span class="bg-farmOrange text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">Mode Économique Interactif</span>
+                <h2 class="text-3xl font-extrabold text-farmDarkGreen mt-2">Simulateur de Prix & Recette de Provende</h2>
+                <p class="text-slate-600 text-sm mt-1">Modifiez les proportions (pour 100 kg) et le prix unitaire des ingrédients selon vos tarifs locaux pour optimiser vos coûts de production.</p>
+            </div>
+
+            <!-- Formulaire de calcul -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                
+                <!-- Tableau des ingrédients -->
+                <div class="lg:col-span-2 space-y-4">
+                    <h3 class="font-bold text-farmDarkGreen text-lg flex items-center">
+                        <span class="mr-2">⚖️</span> Ajustement des Quantités & Prix
+                    </h3>
+                    
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse text-sm">
+                            <thead>
+                                <tr class="bg-slate-100 text-slate-700">
+                                    <th class="p-3 border-b">Matière Première</th>
+                                    <th class="p-3 border-b">Quantité (kg)</th>
+                                    <th class="p-3 border-b">Prix Unitaire (Ar/kg)</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100">
+                                <tr>
+                                    <td class="p-3 font-semibold">Maïs concassé</td>
+                                    <td class="p-3"><input type="number" id="q_mais" value="55" class="w-20 p-1 border rounded font-bold text-center text-farmGreen" oninput="calculer()"></td>
+                                    <td class="p-3"><input type="number" id="p_mais" value="1800" class="w-28 p-1 border rounded text-center" oninput="calculer()"></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-semibold">Son de blé / riz</td>
+                                    <td class="p-3"><input type="number" id="q_son" value="20" class="w-20 p-1 border rounded font-bold text-center text-farmGreen" oninput="calculer()"></td>
+                                    <td class="p-3"><input type="number" id="p_son" value="900" class="w-28 p-1 border rounded text-center" oninput="calculer()"></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-semibold">Concentré Pondeuse (Layers)</td>
+                                    <td class="p-3"><input type="number" id="q_conc" value="18" class="w-20 p-1 border rounded font-bold text-center text-farmGreen" oninput="calculer()"></td>
+                                    <td class="p-3"><input type="number" id="p_conc" value="4500" class="w-28 p-1 border rounded text-center" oninput="calculer()"></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-semibold">Coquillage pilé (Calcium)</td>
+                                    <td class="p-3"><input type="number" id="q_coq" value="6" class="w-20 p-1 border rounded font-bold text-center text-farmGreen" oninput="calculer()"></td>
+                                    <td class="p-3"><input type="number" id="p_coq" value="600" class="w-28 p-1 border rounded text-center" oninput="calculer()"></td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-semibold">Sel de cuisine</td>
+                                    <td class="p-3"><input type="number" id="q_sel" value="1" class="w-20 p-1 border rounded font-bold text-center text-farmGreen" oninput="calculer()"></td>
+                                    <td class="p-3"><input type="number" id="p_sel" value="1500" class="w-28 p-1 border rounded text-center" oninput="calculer()"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="text-xs text-slate-500 italic">* Note : La somme totale des quantités doit idéalement atteindre 100 kg pour un calcul normalisé.</p>
+                </div>
+
+                <!-- Panneau de Résultats en temps réel -->
+                <div class="bg-slate-900 text-white p-6 rounded-2xl flex flex-col justify-between shadow-lg">
+                    <div>
+                        <h3 class="text-lg font-bold text-farmOrange mb-4">📊 Analyse Financière</h3>
+                        <div class="space-y-4 text-sm">
+                            <div class="flex justify-between border-b border-slate-800 pb-2">
+                                <span class="text-slate-400">Poids Total :</span>
+                                <span id="res_poids" class="font-bold">100 kg</span>
+                            </div>
+                            <div class="flex justify-between border-b border-slate-800 pb-2">
+                                <span class="text-slate-400">Coût Total (100 kg) :</span>
+                                <span id="res_total" class="font-bold text-farmOrange text-lg">0 Ar</span>
+                            </div>
+                            <div class="flex justify-between pb-2">
+                                <span class="text-slate-400">Coût de Revient au Kilo :</span>
+                                <span id="res_kilo" class="font-bold text-emerald-400 text-xl">0 Ar / kg</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 pt-4 border-t border-slate-800">
+                        <button onclick="calculer()" class="w-full bg-farmOrange hover:bg-orange-600 text-white font-bold py-3 px-4 rounded-xl transition shadow">
+                            Recalculer le Coût
+                        </button>
+                        <a href="alimentation.html" class="block text-center mt-3 text-xs text-slate-400 hover:text-white underline">← Retour au guide nutritionnel</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Pied de page -->
+    <footer class="bg-slate-800 text-slate-400 py-6 border-t border-slate-700 text-center text-sm">
+        <p>&copy; 2026 BeMIRAY FARMER (Madagascar). Simulateur Économique d'Alimentation.</p>
+    </footer>
+
+    <!-- Script de Calcul en direct -->
+    <script>
+        function calculer() {
+            // Récupération des quantités
+            let q_mais = parseFloat(document.getElementById('q_mais').value) || 0;
+            let q_son = parseFloat(document.getElementById('q_son').value) || 0;
+            let q_conc = parseFloat(document.getElementById('q_conc').value) || 0;
+            let q_coq = parseFloat(document.getElementById('q_coq').value) || 0;
+            let q_sel = parseFloat(document.getElementById('q_sel').value) || 0;
+
+            // Récupération des prix unitaires
+            let p_mais = parseFloat(document.getElementById('p_mais').value) || 0;
+            let p_son = parseFloat(document.getElementById('p_son').value) || 0;
+            let p_conc = parseFloat(document.getElementById('p_conc').value) || 0;
+            let p_coq = parseFloat(document.getElementById('p_coq').value) || 0;
+            let p_sel = parseFloat(document.getElementById('p_sel').value) || 0;
+
+            // Calculs
+            let totalPoids = q_mais + q_son + q_conc + q_coq + q_sel;
+            let totalPrix = (q_mais * p_mais) + (q_son * p_son) + (q_conc * p_conc) + (q_coq * p_coq) + (q_sel * p_sel);
+            let prixKilo = totalPoids > 0 ? (totalPrix / totalPoids) : 0;
+
+            // Affichage
+            document.getElementById('res_poids').innerText = totalPoids + " kg";
+            document.getElementById('res_total').innerText = totalPrix.toLocaleString() + " Ar";
+            document.getElementById('res_kilo').innerText = Math.round(prixKilo).toLocaleString() + " Ar / kg";
+        }
+
+        // Lancer le calcul au chargement initial
+        window.onload = calculer;
+    </script>
+</body>
+</html>
