@@ -13,6 +13,7 @@
                         farmGreen: '#16a34a',
                         farmDarkGreen: '#14532d',
                         farmOrange: '#f97316',
+                        farmBlue: '#0284c7',
                     }
                 }
             }
@@ -28,121 +29,274 @@
                 <img src="logo-bemiray.jpg" alt="Logo BeMiray Farmer" class="w-12 h-12 object-cover rounded-xl shadow-md">
                 <div>
                     <h1 class="text-2xl font-bold tracking-wide">BeMIRAY FARMER</h1>
-                    <p class="text-xs text-farmOrange font-semibold tracking-wider uppercase">Module Nutrition & Formulation Économique</p>
+                    <p class="text-xs text-farmOrange font-semibold tracking-wider uppercase">Module Nutrition & Formulations Avancées</p>
                 </div>
             </div>
             <nav class="flex space-x-6 text-sm font-medium">
                 <a href="index.html" class="hover:text-farmOrange transition">Accueil</a>
                 <a href="alimentation.html" class="text-farmOrange text-white font-bold transition">Alimentation & Nutrition</a>
-                <a href="pondeuses.html" class="hover:text-farmOrange transition">Pondeuses (500 Sujets)</a>
+                <a href="pondeuses.html" class="hover:text-farmOrange transition">Pondeuses</a>
                 <a href="chair.html" class="hover:text-farmOrange transition">Poulets de Chair</a>
             </nav>
         </div>
     </header>
 
-    <!-- Contenu principal en mode Fenêtre / Tableau de bord -->
-    <main class="max-w-5xl mx-auto px-4 py-10 flex-grow w-full">
+    <!-- Corps principal -->
+    <main class="max-w-6xl mx-auto px-4 py-10 flex-grow w-full space-y-10">
         
-        <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
+        <!-- En-tête de page -->
+        <div class="bg-white rounded-2xl shadow-xl p-8 border border-slate-200">
+            <span class="bg-farmOrange text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">Centre Nutritionnel</span>
+            <h2 class="text-3xl font-extrabold text-farmDarkGreen mt-2">Gestion des Formulations d'Aliments</h2>
+            <p class="text-slate-600 text-sm mt-1">Choisissez ci-dessous entre la formulation économique standard, la matrice professionnelle ou l'outil de composition manuelle sur mesure.</p>
             
-            <!-- Bannière visuelle -->
-            <div class="relative h-64 md:h-72 overflow-hidden bg-slate-900">
-                <img src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?auto=format&fit=crop&w=1200&q=80" alt="Alimentation et Céréales" class="w-full h-full object-cover opacity-60">
-                <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
-                <div class="absolute bottom-6 left-6 right-6">
-                    <span class="bg-farmOrange text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">Optimisation des Couts</span>
-                    <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-2">Formulation Économique de la Provende</h2>
-                    <p class="text-slate-200 text-sm mt-1">Maîtrise des apports énergétiques et protéiques à partir d'intrants locaux disponibles.</p>
+            <!-- Boutons de navigation interne (onglets) -->
+            <div class="flex flex-wrap gap-3 mt-6 border-t pt-6">
+                <button onclick="changerFenetre('eco')" id="btn-eco" class="px-5 py-2.5 rounded-xl font-bold text-sm bg-farmDarkGreen text-white shadow transition">1. Formulation Économique</button>
+                <button onclick="changerFenetre('pro')" id="btn-pro" class="px-5 py-2.5 rounded-xl font-bold text-sm bg-slate-200 text-slate-700 hover:bg-slate-300 transition">2. Formulation Professionnelle</button>
+                <button onclick="changerFenetre('manuel')" id="btn-manuel" class="px-5 py-2.5 rounded-xl font-bold text-sm bg-slate-200 text-slate-700 hover:bg-slate-300 transition">3. Formule Manuelle (Sur Mesure)</button>
+            </div>
+        </div>
+
+        <!-- ================= FENÊTRE 1 : FORMULATION ÉCONOMIQUE ================= -->
+        <div id="fenetre-eco" class="bg-white rounded-2xl shadow-xl p-6 md:p-8 border border-slate-200 space-y-6">
+            <div class="flex items-center justify-between border-b pb-4">
+                <div>
+                    <span class="bg-emerald-100 text-farmGreen text-xs font-bold px-3 py-1 rounded-full uppercase">Standard Local</span>
+                    <h3 class="text-2xl font-bold text-farmDarkGreen mt-1">Formulation Économique de la Provende (Base 100 kg)</h3>
                 </div>
+                <span class="text-3xl">🌾</span>
             </div>
 
-            <!-- Corps de la page -->
-            <div class="p-6 md:p-10 space-y-8">
-                
-                <!-- Section : Liste des matières premières principales -->
-                <div>
-                    <h3 class="text-xl font-bold text-farmDarkGreen mb-4 flex items-center">
-                        <span class="mr-2">🌾</span> Ingrédients Clés de la Formulation Locale
-                    </h3>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                            <h4 class="font-bold text-farmDarkGreen mb-1">1. Sources d'Énergie (Glucides)</h4>
-                            <p class="text-sm text-slate-600">Maïs concassé, son de blé, brisures de riz. Fournissent l'énergie nécessaire pour l'entretien et la production d'œufs/chair.</p>
-                        </div>
-                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
-                            <h4 class="font-bold text-farmDarkGreen mb-1">2. Sources de Protéines & Minéraux</h4>
-                            <p class="text-sm text-slate-600">Tourteaux (soja/arachide), concentrés pour pondeuses (Layers), coquillage pilé (calcium pour la coquille de l'œuf) et sel.</p>
-                        </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse text-sm">
+                        <thead>
+                            <tr class="bg-slate-100 text-slate-700">
+                                <th class="p-3 border-b">Ingrédient</th>
+                                <th class="p-3 border-b">Proportion</th>
+                                <th class="p-3 border-b">Rôle</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr><td class="p-3 font-semibold">Maïs écrasé</td><td class="p-3 text-farmGreen font-bold">55 kg</td><td class="p-3 text-slate-600">Énergie</td></tr>
+                            <tr><td class="p-3 font-semibold">Son de blé/riz</td><td class="p-3 text-farmGreen font-bold">20 kg</td><td class="p-3 text-slate-600">Fibres</td></tr>
+                            <tr><td class="p-3 font-semibold">Concentré Pondeuse</td><td class="p-3 text-farmGreen font-bold">18 kg</td><td class="p-3 text-slate-600">Protéines & Vitamines</td></tr>
+                            <tr><td class="p-3 font-semibold">Coquillage pilé</td><td class="p-3 text-farmGreen font-bold">6 kg</td><td class="p-3 text-slate-600">Calcium</td></tr>
+                            <tr><td class="p-3 font-semibold">Sel de cuisine</td><td class="p-3 text-farmGreen font-bold">1 kg</td><td class="p-3 text-slate-600">Minéraux</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-farmDarkGreen mb-2">Avantages & Utilisation</h4>
+                        <p class="text-sm text-slate-600">Idéal pour réduire les coûts d'exploitation tout en couvrant les besoins nutritionnels de base des sujets en phase de production courante.</p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t text-xs text-slate-500">
+                        * Ajustable selon les disponibillités des marchés locaux à Madagascar.
                     </div>
                 </div>
+            </div>
+        </div>
 
-                <!-- Section : Tableau de Formulation pour 100 kg -->
-                <div class="border-t border-slate-100 pt-6">
-                    <h3 class="text-xl font-bold text-farmDarkGreen mb-4">Exemple de Recette Standard (Base 100 kg de Provende Pondeuse)</h3>
-                    
+        <!-- ================= FENÊTRE 2 : FORMULATION PROFESSIONNELLE ================= -->
+        <div id="fenetre-pro" class="hidden bg-white rounded-2xl shadow-xl p-6 md:p-8 border border-slate-200 space-y-6">
+            <div class="flex items-center justify-between border-b pb-4">
+                <div>
+                    <span class="bg-sky-100 text-farmBlue text-xs font-bold px-3 py-1 rounded-full uppercase">Haute Performance</span>
+                    <h3 class="text-2xl font-bold text-farmDarkGreen mt-1">Formulation Professionnelle de la Provende (Mode Pro)</h3>
+                </div>
+                <span class="text-3xl">🔬</span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse text-sm">
+                        <thead>
+                            <tr class="bg-slate-100 text-slate-700">
+                                <th class="p-3 border-b">Ingrédient Pro</th>
+                                <th class="p-3 border-b">Proportion</th>
+                                <th class="p-3 border-b">Taux Protéique</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr><td class="p-3 font-semibold">Maïs jaune</td><td class="p-3 text-farmBlue font-bold">52 kg</td><td class="p-3 text-slate-600">~8.5%</td></tr>
+                            <tr><td class="p-3 font-semibold">Tourteau de Soja</td><td class="p-3 text-farmBlue font-bold">22 kg</td><td class="p-3 text-slate-600">~44%</td></tr>
+                            <tr><td class="p-3 font-semibold">Son de blé fin</td><td class="p-3 text-farmBlue font-bold">10 kg</td><td class="p-3 text-slate-600">~15%</td></tr>
+                            <tr><td class="p-3 font-semibold">Calcaire / Coquillage</td><td class="p-3 text-farmBlue font-bold">8 kg</td><td class="p-3 text-slate-600">Calcium pur</td></tr>
+                            <tr><td class="p-3 font-semibold">Phosphate Bicalcique</td><td class="p-3 text-farmBlue font-bold">2 kg</td><td class="p-3 text-slate-600">Phosphore</td></tr>
+                            <tr><td class="p-3 font-semibold">Prémixe & Acides Aminés</td><td class="p-3 text-farmBlue font-bold">6 kg</td><td class="p-3 text-slate-600">Équilibre complet</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="bg-sky-50 p-6 rounded-xl border border-sky-200 flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-farmDarkGreen mb-2">Objectif Zootechnique</h4>
+                        <p class="text-sm text-slate-700">Cette formule intègre des correcteurs azotés et minéraux précis pour viser un taux protéique global optimal ($\ge$ 18%), garantissant un pic de ponte maximal et une croissance saine.</p>
+                    </div>
+                    <div class="mt-4 pt-4 border-t border-sky-200 text-xs text-sky-800 font-semibold">
+                        Recommandé pour les souches à haut rendimiento.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= FENÊTRE 3 : FORMULE MANUELLE SUR MESURE ================= -->
+        <div id="fenetre-manuel" class="hidden bg-white rounded-2xl shadow-xl p-6 md:p-8 border border-slate-200 space-y-6">
+            <div class="flex items-center justify-between border-b pb-4">
+                <div>
+                    <span class="bg-amber-100 text-farmOrange text-xs font-bold px-3 py-1 rounded-full uppercase">Sur Mesure Interactif</span>
+                    <h3 class="text-2xl font-bold text-farmDarkGreen mt-1">Formule Manuelle : Composition par l'Utilisateur</h3>
+                </div>
+                <span class="text-3xl">⚙️</span>
+            </div>
+
+            <p class="text-sm text-slate-600">Sélectionnez vos ingrédients dans la liste ci-dessous, ajustez le poids en kg et indiquez le prix unitaire en Ariary pour calculer dynamiquement le total et les apports.</p>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Tableau interactif de sélection -->
+                <div class="lg:col-span-2 space-y-4">
                     <div class="overflow-x-auto">
                         <table class="w-full text-left border-collapse text-sm">
                             <thead>
                                 <tr class="bg-slate-100 text-slate-700">
-                                    <th class="p-3 border-b">Matière Première / Ingrédient</th>
-                                    <th class="p-3 border-b">Proportion (pour 100 kg)</th>
-                                    <th class="p-3 border-b">Rôle Principal</th>
+                                    <th class="p-3 border-b">Sélection / Ingrédient</th>
+                                    <th class="p-3 border-b">Poids (kg)</th>
+                                    <th class="p-3 border-b">Prix Unit. (Ar/kg)</th>
+                                    <th class="p-3 border-b">Apport Principal</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-slate-100">
                                 <tr>
-                                    <td class="p-3 font-semibold text-slate-800">Maïs écrasé / concassé</td>
-                                    <td class="p-3 text-farmGreen font-bold">55 kg</td>
-                                    <td class="p-3 text-slate-600">Énergie principale</td>
+                                    <td class="p-3"><label class="flex items-center space-x-2 font-semibold"><input type="checkbox" id="chk_mais" checked onchange="calculerManuel()" class="rounded text-farmOrange"><span>Maïs concassé</span></label></td>
+                                    <td class="p-3"><input type="number" id="m_q_mais" value="50" class="w-16 p-1 border rounded text-center font-bold" oninput="calculerManuel()"></td>
+                                    <td class="p-3"><input type="number" id="m_p_mais" value="1800" class="w-24 p-1 border rounded text-center" oninput="calculerManuel()"></td>
+                                    <td class="p-3 text-xs text-slate-500">Énergie (Glucides)</td>
                                 </tr>
                                 <tr>
-                                    <td class="p-3 font-semibold text-slate-800">Son de blé ou de riz</td>
-                                    <td class="p-3 text-farmGreen font-bold">20 kg</td>
-                                    <td class="p-3 text-slate-600">Fibres et lest digestif</td>
+                                    <td class="p-3"><label class="flex items-center space-x-2 font-semibold"><input type="checkbox" id="chk_son" checked onchange="calculerManuel()" class="rounded text-farmOrange"><span>Son de blé / riz</span></label></td>
+                                    <td class="p-3"><input type="number" id="m_q_son" value="20" class="w-16 p-1 border rounded text-center font-bold" oninput="calculerManuel()"></td>
+                                    <td class="p-3"><input type="number" id="m_p_son" value="900" class="w-24 p-1 border rounded text-center" oninput="calculerManuel()"></td>
+                                    <td class="p-3 text-xs text-slate-500">Fibres & Lest</td>
                                 </tr>
                                 <tr>
-                                    <td class="p-3 font-semibold text-slate-800">Concentré Pondeuse (Layers)</td>
-                                    <td class="p-3 text-farmGreen font-bold">18 kg</td>
-                                    <td class="p-3 text-slate-600">Protéines, acides aminés & vitamines</td>
+                                    <td class="p-3"><label class="flex items-center space-x-2 font-semibold"><input type="checkbox" id="chk_soja" checked onchange="calculerManuel()" class="rounded text-farmOrange"><span>Tourteau de Soja</span></label></td>
+                                    <td class="p-3"><input type="number" id="m_q_soja" value="15" class="w-16 p-1 border rounded text-center font-bold" oninput="calculerManuel()"></td>
+                                    <td class="p-3"><input type="number" id="m_p_soja" value="3800" class="w-24 p-1 border rounded text-center" oninput="calculerManuel()"></td>
+                                    <td class="p-3 text-xs text-slate-500">Protéines végétales</td>
                                 </tr>
                                 <tr>
-                                    <td class="p-3 font-semibold text-slate-800">Coquillage pilé / Calcaire</td>
-                                    <td class="p-3 text-farmGreen font-bold">6 kg</td>
-                                    <td class="p-3 text-slate-600">Apport en Calcium (solidité des œufs)</td>
+                                    <td class="p-3"><label class="flex items-center space-x-2 font-semibold"><input type="checkbox" id="chk_coq" checked onchange="calculerManuel()" class="rounded text-farmOrange"><span>Coquillage / Calcaire</span></label></td>
+                                    <td class="p-3"><input type="number" id="m_q_coq" value="10" class="w-16 p-1 border rounded text-center font-bold" oninput="calculerManuel()"></td>
+                                    <td class="p-3"><input type="number" id="m_p_coq" value="600" class="w-24 p-1 border rounded text-center" oninput="calculerManuel()"></td>
+                                    <td class="p-3 text-xs text-slate-500">Calcium (Coquille)</td>
                                 </tr>
                                 <tr>
-                                    <td class="p-3 font-semibold text-slate-800">Sel de cuisine</td>
-                                    <td class="p-3 text-farmGreen font-bold">1 kg</td>
-                                    <td class="p-3 text-slate-600">Équilibre minéral & appétence</td>
+                                    <td class="p-3"><label class="flex items-center space-x-2 font-semibold"><input type="checkbox" id="chk_sel" checked onchange="calculerManuel()" class="rounded text-farmOrange"><span>Sel & Minéraux</span></label></td>
+                                    <td class="p-3"><input type="number" id="m_q_sel" value="5" class="w-16 p-1 border rounded text-center font-bold" oninput="calculerManuel()"></td>
+                                    <td class="p-3"><input type="number" id="m_p_sel" value="2500" class="w-24 p-1 border rounded text-center" oninput="calculerManuel()"></td>
+                                    <td class="p-3 text-xs text-slate-500">Équilibre & Appétence</td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
                 </div>
 
-                <!-- Plan d'alimentation journalier -->
-                <div class="border-t border-slate-100 pt-6">
-                    <h3 class="text-xl font-bold text-farmDarkGreen mb-4">Rappels des Quantités Consommées par Sujet</h3>
-                    <div class="bg-amber-50 border border-amber-200 rounded-xl p-5 text-sm space-y-2 text-slate-700">
-                        <p><strong>Période de démarrage (0 à 6 semaines) :</strong> ~12 g à 35 g par sujet / jour (Aliment Starter riche en protéines).</p>
-                        <p><strong>Période de croissance (6 à 20 semaines) :</strong> ~40 g à 100 g par sujet / jour.</p>
-                        <p><strong>Période de ponte (à partir de 20 semaines) :</strong> ~100 g à 110 g par sujet / jour pour un troupeau de pondeuses performant.</p>
+                <!-- Panneau de Résultat en direct -->
+                <div class="bg-slate-900 text-white p-6 rounded-2xl flex flex-col justify-between shadow-lg">
+                    <div>
+                        <h4 class="text-lg font-bold text-farmOrange mb-4">📊 Résultat de votre Formule</h4>
+                        <div class="space-y-3 text-sm">
+                            <div class="flex justify-between border-b border-slate-800 pb-2">
+                                <span class="text-slate-400">Poids Total Mélange :</span>
+                                <span id="man_poids" class="font-bold">0 kg</span>
+                            </div>
+                            <div class="flex justify-between border-b border-slate-800 pb-2">
+                                <span class="text-slate-400">Coût Total (MGA) :</span>
+                                <span id="man_total" class="font-bold text-farmOrange text-lg">0 Ar</span>
+                            </div>
+                            <div class="flex justify-between pb-2">
+                                <span class="text-slate-400">Coût de Revient :</span>
+                                <span id="man_kilo" class="font-bold text-emerald-400 text-xl">0 Ar / kg</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-800">
+                        <button onclick="calculerManuel()" class="w-full bg-farmOrange hover:bg-orange-600 text-white font-bold py-3 px-4 rounded-xl transition shadow">
+                            Recalculer le Mélange
+                        </button>
                     </div>
                 </div>
-
-                <!-- Bouton de retour -->
-                <div class="pt-4 text-center">
-                    <a href="index.html" class="inline-block bg-slate-800 hover:bg-slate-900 text-white font-semibold py-3 px-8 rounded-xl transition shadow">← Retour à l'accueil principal</a>
-                </div>
-
             </div>
+        </div>
+
+        <!-- Bouton retour -->
+        <div class="text-center pt-4">
+            <a href="index.html" class="inline-block bg-slate-800 hover:bg-slate-900 text-white font-semibold py-3 px-8 rounded-xl transition shadow">← Retour à l'accueil principal</a>
         </div>
 
     </main>
 
     <!-- Pied de page -->
     <footer class="bg-slate-800 text-slate-400 py-6 border-t border-slate-700 text-center text-sm">
-        <p>&copy; 2026 BeMIRAY FARMER (Madagascar). Module Alimentation & Nutrition.</p>
+        <p>&copy; 2026 BeMIRAY FARMER (Madagascar). Module Nutrition Intégré.</p>
     </footer>
+
+    <!-- Scripts de gestion des onglets et du calculateur manuel -->
+    <script>
+        function changerFenetre(type) {
+            document.getElementById('fenetre-eco').classList.add('hidden');
+            document.getElementById('fenetre-pro').classList.add('hidden');
+            document.getElementById('fenetre-manuel').classList.add('hidden');
+
+            document.getElementById('btn-eco').className = "px-5 py-2.5 rounded-xl font-bold text-sm bg-slate-200 text-slate-700 hover:bg-slate-300 transition";
+            document.getElementById('btn-pro').className = "px-5 py-2.5 rounded-xl font-bold text-sm bg-slate-200 text-slate-700 hover:bg-slate-300 transition";
+            document.getElementById('btn-manuel').className = "px-5 py-2.5 rounded-xl font-bold text-sm bg-slate-200 text-slate-700 hover:bg-slate-300 transition";
+
+            if (type === 'eco') {
+                document.getElementById('fenetre-eco').classList.remove('hidden');
+                document.getElementById('btn-eco').className = "px-5 py-2.5 rounded-xl font-bold text-sm bg-farmDarkGreen text-white shadow transition";
+            } else if (type === 'pro') {
+                document.getElementById('fenetre-pro').classList.remove('hidden');
+                document.getElementById('btn-pro').className = "px-5 py-2.5 rounded-xl font-bold text-sm bg-farmBlue text-white shadow transition";
+            } else if (type === 'manuel') {
+                document.getElementById('fenetre-manuel').classList.remove('hidden');
+                document.getElementById('btn-manuel').className = "px-5 py-2.5 rounded-xl font-bold text-sm bg-farmOrange text-white shadow transition";
+                calculerManuel();
+            }
+        }
+
+        function calculerManuel() {
+            let items = [
+                { chk: 'chk_mais', q: 'm_q_mais', p: 'm_p_mais' },
+                { chk: 'chk_son', q: 'm_q_son', p: 'm_p_son' },
+                { chk: 'chk_soja', q: 'm_q_soja', p: 'm_p_soja' },
+                { chk: 'chk_coq', q: 'm_q_coq', p: 'm_p_coq' },
+                { chk: 'chk_sel', q: 'm_q_sel', p: 'm_p_sel' }
+            ];
+
+            let totalPoids = 0;
+            let totalPrix = 0;
+
+            items.forEach(item => {
+                if (document.getElementById(item.chk).checked) {
+                    let q = parseFloat(document.getElementById(item.q).value) || 0;
+                    let p = parseFloat(document.getElementById(item.p).value) || 0;
+                    totalPoids += q;
+                    totalPrix += (q * p);
+                }
+            });
+
+            let prixKilo = totalPoids > 0 ? (totalPrix / totalPoids) : 0;
+
+            document.getElementById('man_poids').innerText = totalPoids + " kg";
+            document.getElementById('man_total').innerText = totalPrix.toLocaleString() + " Ar";
+            document.getElementById('man_kilo').innerText = Math.round(prixKilo).toLocaleString() + " Ar / kg";
+        }
+
+        window.onload = function() {
+            calculerManuel();
+        };
+    </script>
 </body>
 </html>
