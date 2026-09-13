@@ -48,7 +48,7 @@
         <div class="bg-white rounded-2xl shadow-xl p-8 border border-slate-200">
             <span class="bg-farmOrange text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">Centre Nutritionnel</span>
             <h2 class="text-3xl font-extrabold text-farmDarkGreen mt-2">Gestion des Formulations d'Aliments</h2>
-            <p class="text-slate-600 text-sm mt-1">Choisissez ci-dessous entre la formulation économique standard, la matrice professionnelle ou l'outil de composition manuelle sur mesure avec ajout d'ingrédients libres.</p>
+            <p class="text-slate-600 text-sm mt-1">Sélectionnez les ingrédients directement depuis la liste pré-enregistrée pour composer votre formule manuelle sur mesure.</p>
             
             <!-- Boutons d'onglets -->
             <div class="flex flex-wrap gap-3 mt-6 border-t pt-6">
@@ -89,7 +89,7 @@
                 <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 flex flex-col justify-between">
                     <div>
                         <h4 class="font-bold text-farmDarkGreen mb-2">Avantages & Utilisation</h4>
-                        <p class="text-sm text-slate-600">Idéal pour réduire les coûts d'exploitation tout en couvrant les besoins nutritionnels de base des sujets en phase de production courante.</p>
+                        <p class="text-sm text-slate-600">Idéal pour réduire les coûts d'exploitation tout en couvrant les besoins nutritionnels de base.</p>
                     </div>
                 </div>
             </div>
@@ -127,37 +127,47 @@
                 <div class="bg-sky-50 p-6 rounded-xl border border-sky-200 flex flex-col justify-between">
                     <div>
                         <h4 class="font-bold text-farmDarkGreen mb-2">Objectif Zootechnique</h4>
-                        <p class="text-sm text-slate-700">Cette formule intègre des correcteurs azotés et minéraux précis pour viser un taux protéique global optimal.</p>
+                        <p class="text-sm text-slate-700">Intègre des correcteurs azotés et minéraux précis pour viser un taux protéique global optimal.</p>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- ================= FENÊTRE 3 : FORMULE MANUELLE SUR MESURE AVEC AJOUT D'INGRÉDIENTS ================= -->
+        <!-- ================= FENÊTRE 3 : FORMULE MANUELLE PAR CHOIX DANS LISTE ================= -->
         <div id="fenetre-manuel" class="hidden bg-white rounded-2xl shadow-xl p-6 md:p-8 border border-slate-200 space-y-6">
             <div class="flex items-center justify-between border-b pb-4">
                 <div>
-                    <span class="bg-amber-100 text-farmOrange text-xs font-bold px-3 py-1 rounded-full uppercase">Sur Mesure Interactif</span>
-                    <h3 class="text-2xl font-bold text-farmDarkGreen mt-1">Formule Manuelle : Ajout & Composition Libre</h3>
+                    <span class="bg-amber-100 text-farmOrange text-xs font-bold px-3 py-1 rounded-full uppercase">Sélection sur Liste</span>
+                    <h3 class="text-2xl font-bold text-farmDarkGreen mt-1">Formule Manuelle : Choix des Ingrédients</h3>
                 </div>
                 <span class="text-3xl">⚙️</span>
             </div>
 
-            <p class="text-sm text-slate-600">Cochez les ingrédients souhaités, ajustez leur poids ou <strong>ajoutez vos propres ingrédients personnalisés</strong> avec le bouton ci-dessous.</p>
+            <p class="text-sm text-slate-600">Choisissez un ingrédient dans la liste déroulante pré-enregistrée, indiquez le poids désiré et ajoutez-le à votre mélange en un clic.</p>
 
-            <!-- Formulaire d'ajout rapide d'un nouvel ingrédient -->
-            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col md:flex-row gap-3 items-center">
-                <input type="text" id="nouv_nom" placeholder="Nom du nouvel ingrédient (ex: Tourteau d'arachide)" class="flex-grow p-2 border rounded text-sm w-full">
-                <input type="number" id="nouv_poids" placeholder="Poids (kg)" class="w-full md:w-28 p-2 border rounded text-sm text-center">
-                <input type="number" id="nouv_prix" placeholder="Prix (Ar/kg)" class="w-full md:w-32 p-2 border rounded text-sm text-center">
-                <button onclick="ajouterIngredient()" class="w-full md:w-auto bg-farmOrange hover:bg-orange-600 text-white font-bold px-5 py-2 rounded-xl text-sm transition shadow">
-                    + Ajouter l'ingrédient
-                </button>
+            <!-- Barre de sélection par liste -->
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 grid grid-cols-1 md:grid-cols-4 gap-3 items-center">
+                <div class="md:col-span-2">
+                    <label class="block text-xs font-bold text-slate-600 mb-1">Choisir un ingrédient :</label>
+                    <select id="select_ingredient" class="w-full p-2 border rounded text-sm bg-white font-medium">
+                        <!-- Options injectées par JS -->
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-slate-600 mb-1">Poids (kg) :</label>
+                    <input type="number" id="input_poids_ajout" value="10" class="w-full p-2 border rounded text-sm text-center font-bold">
+                </div>
+                <div class="flex items-end">
+                    <button onclick="ajouterDepuisListe()" class="w-full bg-farmOrange hover:bg-orange-600 text-white font-bold px-4 py-2 rounded-xl text-sm transition shadow mt-5 md:mt-0">
+                        + Ajouter au mélange
+                    </button>
+                </div>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
-                <!-- Tableau dynamique des ingrédients -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-6">
+                <!-- Tableau des ingrédients sélectionnés -->
                 <div class="lg:col-span-2 space-y-4">
+                    <h4 class="font-bold text-farmDarkGreen text-sm">Ingrédients de votre mélange actuel :</h4>
                     <div class="overflow-x-auto">
                         <table class="w-full text-left border-collapse text-sm">
                             <thead>
@@ -168,8 +178,8 @@
                                     <th class="p-3 border-b text-center">Action</th>
                                 </tr>
                             </thead>
-                            <tbody id="liste-ingredients" class="divide-y divide-slate-100">
-                                <!-- Les lignes sont gérées dynamiquement par JavaScript -->
+                            <tbody id="liste-melange" class="divide-y divide-slate-100">
+                                <!-- Rempli dynamiquement -->
                             </tbody>
                         </table>
                     </div>
@@ -215,86 +225,103 @@
         <p>&copy; 2026 BeMIRAY FARMER (Madagascar). Module Nutrition Intégré.</p>
     </footer>
 
-    <!-- Script de gestion dynamique des ingrédients et des onglets -->
+    <!-- Script de gestion par liste déroulante -->
     <script>
-        // Liste initiale des ingrédients modifiables et sélectionnables
-        let ingredients = [
-            { id: 1, nom: "Maïs concassé", poids: 50, prix: 1800, actif: true },
-            { id: 2, nom: "Son de blé / riz", poids: 20, prix: 900, actif: true },
-            { id: 3, nom: "Tourteau de Soja", poids: 15, prix: 3800, actif: true },
-            { id: 4, nom: "Coquillage / Calcaire", poids: 10, prix: 600, actif: true },
-            { id: 5, nom: "Sel & Minéraux", poids: 5, prix: 2500, actif: true }
+        // Catalogue complet des ingrédients disponibles dans la liste de choix
+        const catalogueIngredients = [
+            { nom: "Maïs concassé / écrasé", prix: 1800, role: "Énergie" },
+            { nom: "Maïs jaune", prix: 1900, role: "Énergie" },
+            { nom: "Son de blé", prix: 900, role: "Fibres" },
+            { nom: "Son de riz", prix: 800, role: "Fibres" },
+            { nom: "Tourteau de Soja", prix: 3800, role: "Protéines" },
+            { nom: "Tourteau d'arachide", prix: 3200, role: "Protéines" },
+            { nom: "Concentré Pondeuse", prix: 4500, role: "Correcteur" },
+            { nom: "Concentré Chair", prix: 4800, role: "Correcteur" },
+            { nom: "Coquillage pilé / Calcaire", prix: 600, role: "Calcium" },
+            { nom: "Phosphate Bicalcique", prix: 5500, role: "Phosphore" },
+            { nom: "Sel de cuisine", prix: 2500, role: "Minéraux" },
+            { nom: "Prémixe multivitamines", prix: 8000, role: "Vitamines" }
         ];
 
-        function initialiserTableau() {
-            let tbody = document.getElementById('liste-ingredients');
+        // Ingrédients actuels sélectionnés dans le mélange de l'utilisateur
+        let melangeActuel = [
+            { nom: "Maïs concassé / écrasé", poids: 50, prix: 1800 },
+            { nom: "Son de blé", poids: 20, prix: 900 },
+            { nom: "Tourteau de Soja", poids: 15, prix: 3800 },
+            { nom: "Coquillage pilé / Calcaire", poids: 10, prix: 600 },
+            { nom: "Sel de cuisine", poids: 5, prix: 2500 }
+        ];
+
+        function initialiserSelect() {
+            let select = document.getElementById('select_ingredient');
+            select.innerHTML = '';
+            catalogueIngredients.forEach(item => {
+                let opt = document.createElement('option');
+                opt.value = item.nom;
+                opt.textContent = `${item.nom} (~${item.prix} Ar/kg - ${item.role})`;
+                opt.dataset.prix = item.prix;
+                select.appendChild(opt);
+            });
+        }
+
+        function afficherMelange() {
+            let tbody = document.getElementById('liste-melange');
             tbody.innerHTML = '';
             
-            ingredients.forEach((ing, index) => {
+            melangeActuel.forEach((ing, index) => {
                 let tr = document.createElement('tr');
                 tr.innerHTML = `
-                    <td class="p-3">
-                        <label class="flex items-center space-x-2 font-semibold">
-                            <input type="checkbox" ${ing.actif ? 'checked' : ''} onchange="toggleActif(${index})" class="rounded text-farmOrange">
-                            <span>${ing.nom}</span>
-                        </label>
-                    </td>
-                    <td class="p-3"><input type="number" value="${ing.poids}" id="poids_${index}" oninput="mettreAJourValeurs(${index})" class="w-16 p-1 border rounded text-center font-bold"></td>
-                    <td class="p-3"><input type="number" value="${ing.prix}" id="prix_${index}" oninput="mettreAJourValeurs(${index})" class="w-24 p-1 border rounded text-center"></td>
-                    <td class="p-3 text-center"><button onclick="supprimerIngredient(${index})" class="text-red-500 hover:text-red-700 font-bold text-xs bg-red-50 p-1.5 rounded">Supprimer</button></td>
+                    <td class="p-3 font-semibold text-slate-700">${ing.nom}</td>
+                    <td class="p-3"><input type="number" value="${ing.poids}" id="m_poids_${index}" oninput="modifierPoids(${index})" class="w-16 p-1 border rounded text-center font-bold"></td>
+                    <td class="p-3"><input type="number" value="${ing.prix}" id="m_prix_${index}" oninput="modifierPrix(${index})" class="w-24 p-1 border rounded text-center"></td>
+                    <td class="p-3 text-center"><button onclick="retirerIngredient(${index})" class="text-red-500 hover:text-red-700 font-bold text-xs bg-red-50 p-1.5 rounded">Retirer</button></td>
                 `;
                 tbody.appendChild(tr);
             });
             calculerManuel();
         }
 
-        function toggleActif(index) {
-            ingredients[index].actif = !ingredients[index].actif;
-            calculerManuel();
-        }
+        function ajouterDepuisListe() {
+            let select = document.getElementById('select_ingredient');
+            let nomChoisi = select.value;
+            let prixDefaut = parseFloat(select.options[select.selectedIndex].dataset.prix) || 1000;
+            let poidsDemande = parseFloat(document.getElementById('input_poids_ajout').value) || 10;
 
-        function mettreAJourValeurs(index) {
-            let p = parseFloat(document.getElementById(`poids_${index}`).value) || 0;
-            let pr = parseFloat(document.getElementById(`prix_${index}`).value) || 0;
-            ingredients[index].poids = p;
-            ingredients[index].prix = pr;
-            calculerManuel();
-        }
-
-        function ajouterIngredient() {
-            let nom = document.getElementById('nouv_nom').value.trim();
-            let poids = parseFloat(document.getElementById('nouv_poids').value) || 0;
-            let prix = parseFloat(document.getElementById('nouv_prix').value) || 0;
-
-            if (!nom) {
-                alert("Veuillez saisir un nom pour l'ingrédient.");
-                return;
+            // Vérifier si l'ingrédient est déjà dans le mélange, si oui on additionne le poids, sinon on l'ajoute
+            let existant = melangeActuel.find(i => i.nom === nomChoisi);
+            if (existant) {
+                existant.poids += poidsDemande;
+            } else {
+                melangeActuel.push({ nom: nomChoisi, poids: poidsDemande, prix: prixDefaut });
             }
 
-            ingredients.push({ id: Date.now(), nom: nom, poids: poids, prix: prix, actif: true });
-            
-            // Vider les champs de saisie
-            document.getElementById('nouv_nom').value = '';
-            document.getElementById('nouv_poids').value = '';
-            document.getElementById('nouv_prix').value = '';
-
-            initialiserTableau();
+            afficherMelange();
         }
 
-        function supprimerIngredient(index) {
-            ingredients.splice(index, 1);
-            initialiserTableau();
+        function modifierPoids(index) {
+            let val = parseFloat(document.getElementById(`m_poids_${index}`).value) || 0;
+            melangeActuel[index].poids = val;
+            calculerManuel();
+        }
+
+        function modifierPrix(index) {
+            let val = parseFloat(document.getElementById(`m_prix_${index}`).value) || 0;
+            melangeActuel[index].prix = val;
+            calculerManuel();
+        }
+
+        function retirerIngredient(index) {
+            melangeActuel.splice(index, 1);
+            afficherMelange();
         }
 
         function calculerManuel() {
             let totalPoids = 0;
             let totalPrix = 0;
 
-            ingredients.forEach(ing => {
-                if (ing.actif) {
-                    totalPoids += ing.poids;
-                    totalPrix += (ing.poids * ing.prix);
-                }
+            melangeActuel.forEach(ing => {
+                totalPoids += ing.poids;
+                totalPrix += (ing.poids * ing.prix);
             });
 
             let prixKilo = totalPoids > 0 ? (totalPrix / totalPoids) : 0;
@@ -322,12 +349,14 @@
             } else if (type === 'manuel') {
                 document.getElementById('fenetre-manuel').classList.remove('hidden');
                 document.getElementById('btn-manuel').className = "px-5 py-2.5 rounded-xl font-bold text-sm bg-farmOrange text-white shadow transition";
-                initialiserTableau();
+                initialiserSelect();
+                afficherMelange();
             }
         }
 
         window.onload = function() {
-            initialiserTableau();
+            initialiserSelect();
+            afficherMelange();
         };
     </script>
 </body>
