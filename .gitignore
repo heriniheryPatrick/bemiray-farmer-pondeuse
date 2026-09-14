@@ -1,4 +1,8 @@
-token.txt
-token.txt
-token.txt
-.venv/
+# Fichiers de base de données SQLite locaux
+*.db
+*.sqlite
+*.sqlite3
+
+# Cache Python
+__pycache__/
+*.pyc

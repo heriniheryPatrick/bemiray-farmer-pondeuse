@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alimentation & Nutrition | BeMIRAY FARMER</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        farmGreen: '#16a34a',
+                        farmDarkGreen: '#14532d',
+                        farmOrange: '#f97316',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-100 text-slate-800 font-sans min-h-screen flex flex-col">
+
+    <!-- En-tête -->
+    <header class="bg-farmDarkGreen text-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-6 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center space-x-3 mb-4 md:mb-0">
+                <img src="logo-bemiray.jpg" alt="Logo BeMiray Farmer" class="w-12 h-12 object-cover rounded-xl shadow-md">
+                <div>
+                    <h1 class="text-2xl font-bold tracking-wide">BeMIRAY FARMER</h1>
+                    <p class="text-xs text-farmOrange font-semibold tracking-wider uppercase">Module Nutrition & Formulation Économique</p>
+                </div>
+            </div>
+            <nav class="flex space-x-6 text-sm font-medium">
+                <a href="index.html" class="hover:text-farmOrange transition">Accueil</a>
+                <a href="alimentation.html" class="text-farmOrange text-white font-bold transition">Alimentation & Nutrition</a>
+                <a href="pondeuses.html" class="hover:text-farmOrange transition">Pondeuses (500 Sujets)</a>
+                <a href="chair.html" class="hover:text-farmOrange transition">Poulets de Chair</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Contenu principal en mode Fenêtre / Tableau de bord -->
+    <main class="max-w-5xl mx-auto px-4 py-10 flex-grow w-full">
+        
+        <div class="bg-white rounded-2xl shadow-xl overflow-hidden border border-slate-200">
+            
+            <!-- Bannière visuelle -->
+            <div class="relative h-64 md:h-72 overflow-hidden bg-slate-900">
+                <img src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?auto=format&fit=crop&w=1200&q=80" alt="Alimentation et Céréales" class="w-full h-full object-cover opacity-60">
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-900 via-transparent to-transparent"></div>
+                <div class="absolute bottom-6 left-6 right-6">
+                    <span class="bg-farmOrange text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">Optimisation des Couts</span>
+                    <h2 class="text-3xl md:text-4xl font-extrabold text-white mt-2">Formulation Économique de la Provende</h2>
+                    <p class="text-slate-200 text-sm mt-1">Maîtrise des apports énergétiques et protéiques à partir d'intrants locaux disponibles.</p>
+                </div>
+            </div>
+
+            <!-- Corps de la page -->
+            <div class="p-6 md:p-10 space-y-8">
+                
+                <!-- Section : Liste des matières premières principales -->
+                <div>
+                    <h3 class="text-xl font-bold text-farmDarkGreen mb-4 flex items-center">
+                        <span class="mr-2">🌾</span> Ingrédients Clés de la Formulation Locale
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <h4 class="font-bold text-farmDarkGreen mb-1">1. Sources d'Énergie (Glucides)</h4>
+                            <p class="text-sm text-slate-600">Maïs concassé, son de blé, brisures de riz. Fournissent l'énergie nécessaire pour l'entretien et la production d'œufs/chair.</p>
+                        </div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-200">
+                            <h4 class="font-bold text-farmDarkGreen mb-1">2. Sources de Protéines & Minéraux</h4>
+                            <p class="text-sm text-slate-600">Tourteaux (soja/arachide), concentrés pour pondeuses (Layers), coquillage pilé (calcium pour la coquille de l'œuf) et sel.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Section : Tableau de Formulation pour 100 kg -->
+                <div class="border-t border-slate-100 pt-6">
+                    <h3 class="text-xl font-bold text-farmDarkGreen mb-4">Exemple de Recette Standard (Base 100 kg de Provende Pondeuse)</h3>
+                    
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse text-sm">
+                            <thead>
+                                <tr class="bg-slate-100 text-slate-700">
+                                    <th class="p-3 border-b">Matière Première / Ingrédient</th>
+                                    <th class="p-3 border-b">Proportion (pour 100 kg)</th>
+                                    <th class="p-3 border-b">Rôle Principal</th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-slate-100">
+                                <tr>
+                                    <td class="p-3 font-semibold text-slate-800">Maïs écrasé / concassé</td>
+                                    <td class="p-3 text-farmGreen font-bold">55 kg</td>
+                                    <td class="p-3 text-slate-600">Énergie principale</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-semibold text-slate-800">Son de blé ou de riz</td>
+                                    <td class="p-3 text-farmGreen font-bold">20 kg</td>
+                                    <td class="p-3 text-slate-600">Fibres et lest digestif</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-semibold text-slate-800">Concentré Pondeuse (Layers)</td>
+                                    <td class="p-3 text-farmGreen font-bold">18 kg</td>
+                                    <td class="p-3 text-slate-600">Protéines, acides aminés & vitamines</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-semibold text-slate-800">Coquillage pilé / Calcaire</td>
+                                    <td class="p-3 text-farmGreen font-bold">6 kg</td>
+                                    <td class="p-3 text-slate-600">Apport en Calcium (solidité des œufs)</td>
+                                </tr>
+                                <tr>
+                                    <td class="p-3 font-semibold text-slate-800">Sel de cuisine</td>
+                                    <td class="p-3 text-farmGreen font-bold">1 kg</td>
+                                    <td class="p-3 text-slate-600">Équilibre minéral & appétence</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Plan d'alimentation journalier -->
+                <div class="border-t border-slate-100 pt-6">
+                    <h3 class="text-xl font-bold text-farmDarkGreen mb-4">Rappels des Quantités Consommées par Sujet</h3>
+                    <div class="bg-amber-50 border border-amber-200 rounded-xl p-5 text-sm space-y-2 text-slate-700">
+                        <p><strong>Période de démarrage (0 à 6 semaines) :</strong> ~12 g à 35 g par sujet / jour (Aliment Starter riche en protéines).</p>
+                        <p><strong>Période de croissance (6 à 20 semaines) :</strong> ~40 g à 100 g par sujet / jour.</p>
+                        <p><strong>Période de ponte (à partir de 20 semaines) :</strong> ~100 g à 110 g par sujet / jour pour un troupeau de pondeuses performant.</p>
+                    </div>
+                </div>
+
+                <!-- Bouton de retour -->
+                <div class="pt-4 text-center">
+                    <a href="index.html" class="inline-block bg-slate-800 hover:bg-slate-900 text-white font-semibold py-3 px-8 rounded-xl transition shadow">← Retour à l'accueil principal</a>
+                </div>
+
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Pied de page -->
+    <footer class="bg-slate-800 text-slate-400 py-6 border-t border-slate-700 text-center text-sm">
+        <p>&copy; 2026 BeMIRAY FARMER (Madagascar). Module Alimentation & Nutrition.</p>
+    </footer>
+</body>
+</html>

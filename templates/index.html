@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FARMA BeMiray - Portail de Gestion</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-50 min-h-screen flex flex-col justify-between">
+
+    <!-- En-tête / Navigation -->
+    <header class="bg-emerald-800 text-white shadow-md">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="flex items-center space-x-3">
+                <span class="text-3xl">🌾</span>
+                <div>
+                    <h1 class="font-bold text-xl tracking-wide">FARMA BeMiray</h1>
+                    <p class="text-xs text-emerald-200">Ambohitraina, Ilafy</p>
+                </div>
+            </div>
+            <span class="text-xs bg-emerald-700 border border-emerald-600 px-3 py-1.5 rounded-full font-medium">Plateforme Avicole & Agricole</span>
+        </div>
+    </header>
+
+    <!-- Contenu Principal -->
+    <main class="max-w-4xl mx-auto px-6 py-12 flex-grow flex flex-col items-center justify-center text-center">
+        <div class="mb-10">
+            <h2 class="text-3xl md:text-4xl font-extrabold text-slate-800 mb-3">Système de Gestion Intégré</h2>
+            <p class="text-slate-600 max-w-xl mx-auto text-base">Pilotez vos activités d'élevage de pondeuses et le suivi nutritionnel de manière centralisée et performante.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 w-full">
+            <!-- Carte Module Pondeuses -->
+            <a href="/pondeuses" class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-all border border-slate-200 hover:border-emerald-500 flex flex-col items-center text-group group">
+                <div class="w-16 h-16 bg-emerald-50 text-emerald-600 rounded-full flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition">
+                    🐔
+                </div>
+                <h3 class="text-xl font-bold text-slate-800 mb-2">Module Pondeuses</h3>
+                <p class="text-slate-500 text-sm mb-6">Suivi des lots, enregistrement de la ponte (bons, cassés, sales), taux de mortalité et calcul d'âge dynamique.</p>
+                <span class="text-emerald-700 font-semibold text-sm flex items-center group-hover:underline">
+                    Accéder au module &rarr;
+                </span>
+            </a>
+
+            <!-- Carte Module Alimentation -->
+            <a href="/alimentation" class="bg-white p-8 rounded-2xl shadow-sm hover:shadow-md transition-all border border-slate-200 hover:border-amber-500 flex flex-col items-center text-group group">
+                <div class="w-16 h-16 bg-amber-50 text-amber-600 rounded-full flex items-center justify-center text-3xl mb-4 group-hover:scale-110 transition">
+                    🌽
+                </div>
+                <h3 class="text-xl font-bold text-slate-800 mb-2">Module Alimentation</h3>
+                <p class="text-slate-500 text-sm mb-6">Gestion des stocks d'aliments, formules de rations journalières et traçabilité des coûts d'exploitation.</p>
+                <span class="text-amber-700 font-semibold text-sm flex items-center group-hover:underline">
+                    Accéder au module &rarr;
+                </span>
+            </a>
+        </div>
+    </main>
+
+    <!-- Pied de page -->
+    <footer class="bg-white border-t border-slate-200 text-slate-500 text-center py-4 text-xs">
+        &copy; 2026 FARMA BeMiray &bull; Tous droits réservés.
+    </footer>
+
+</body>
+</html>

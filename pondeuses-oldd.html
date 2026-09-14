@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion des Lots Pondeuses | FARMA BeMiray</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-slate-100 text-slate-800 p-8">
+    <div class="max-w-6xl mx-auto space-y-6">
+        <h1 class="text-3xl font-bold text-emerald-800">🐔 Suivi des Lots de Pondeuses</h1>
+
+        <!-- Tableau des lots -->
+        <div class="bg-white rounded-xl shadow p-6 overflow-x-auto">
+            <table class="w-full text-left border-collapse text-sm">
+                <thead>
+                    <tr class="bg-slate-100">
+                        <th class="p-3 border-b">Nom du Lot</th>
+                        <th class="p-3 border-b">Effectif Actuel</th>
+                        <th class="p-3 border-b">Mortalité Cumulée</th>
+                        <th class="p-3 border-b">Œufs Totaux</th>
+                        <th class="p-3 border-b">Plateaux (~30 œufs)</th>
+                    </tr>
+                </thead>
+                <tbody class="divide-y">
+                    {% for lot in lots %}
+                    <tr>
+                        <td class="p-3 font-semibold">{{ lot.lot }}</td>
+                        <td class="p-3 text-emerald-600 font-bold">{{ lot.effectif_actuel }}</td>
+                        <td class="p-3 text-red-500">{{ lot.mortalite_totale }}</td>
+                        <td class="p-3">{{ lot.total_oeufs }}</td>
+                        <td class="p-3 font-bold">{{ lot.total_plaques }} plaques</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

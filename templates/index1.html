@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FARMA BeMiray - Accueil</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-50 min-h-screen flex flex-col">
+    <!-- Barre de Navigation -->
+    <nav class="bg-emerald-700 text-white shadow-md py-4 px-6">
+        <div class="container mx-auto flex justify-between items-center">
+            <span class="font-bold text-xl tracking-wide">🌾 FARMA BeMiray</span>
+            <span class="text-sm bg-emerald-800 px-3 py-1 rounded-full">Plateforme Opérationnelle</span>
+        </div>
+    </nav>
+
+    <!-- Contenu Principal -->
+    <main class="flex-grow container mx-auto px-4 py-12 flex flex-col items-center justify-center">
+        <div class="text-center mb-12">
+            <h1 class="text-4xl font-extrabold text-gray-800 mb-4">Bienvenue sur FARMA BeMiray</h1>
+            <p class="text-lg text-gray-600 max-w-xl mx-auto">Sélectionnez un module ci-dessous pour piloter vos activités d'élevage en toute simplicité.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-3xl">
+            <!-- Carte Pondeuses -->
+            <a href="/pondeuses" class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 border-t-4 border-emerald-600 flex flex-col items-center text-center group">
+                <div class="text-5xl mb-4 group-hover:scale-110 transition">🐔</div>
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">Module Pondeuses</h2>
+                <p class="text-gray-500 mb-6">Suivi des lots, production d'œufs (bons, cassés, sales), mortalité, âge dynamique et taux de ponte.</p>
+                <span class="bg-emerald-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-emerald-700 transition">Accéder au suivi</span>
+            </a>
+
+            <!-- Carte Alimentation -->
+            <a href="/alimentation" class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition transform hover:-translate-y-1 border-t-4 border-amber-600 flex flex-col items-center text-center group">
+                <div class="text-5xl mb-4 group-hover:scale-110 transition">🌽</div>
+                <h2 class="text-2xl font-bold text-gray-800 mb-2">Module Alimentation</h2>
+                <p class="text-gray-500 mb-6">Gestion des stocks d'aliments, rations journalières, coûts et traçabilité des apports nutritionnels.</p>
+                <span class="bg-amber-600 text-white px-6 py-2 rounded-lg font-semibold hover:bg-amber-700 transition">Accéder à l'alimentation</span>
+            </a>
+        </div>
+    </main>
+
+    <!-- Pied de page -->
+    <footer class="bg-gray-800 text-white text-center py-4 text-sm">
+        &copy; 2026 FARMA BeMiray - Ambohitraina, Ilafy. Tous droits réservés.
+    </footer>
+</body>
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alimentation & Nutrition | BeMIRAY FARMER</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        farmGreen: '#16a34a',
+                        farmDarkGreen: '#14532d',
+                        farmOrange: '#f97316',
+                        farmBlue: '#0284c7',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-100 text-slate-800 font-sans min-h-screen flex flex-col">
+
+    <!-- En-tête -->
+    <header class="bg-farmDarkGreen text-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-6 flex flex-col md:flex-row justify-between items-center">
+            <div class="flex items-center space-x-3 mb-4 md:mb-0">
+                <img src="logo-bemiray.jpg" alt="Logo BeMiray Farmer" class="w-12 h-12 object-cover rounded-xl shadow-md">
+                <div>
+                    <h1 class="text-2xl font-bold tracking-wide">BeMIRAY FARMER</h1>
+                    <p class="text-xs text-farmOrange font-semibold tracking-wider uppercase">Module Nutrition & Formulations Avancées</p>
+                </div>
+            </div>
+            <nav class="flex space-x-6 text-sm font-medium">
+                <a href="index.html" class="hover:text-farmOrange transition">Accueil</a>
+                <a href="alimentation.html" class="text-farmOrange text-white font-bold transition">Alimentation & Nutrition</a>
+                <a href="pondeuses.html" class="hover:text-farmOrange transition">Pondeuses</a>
+                <a href="chair.html" class="hover:text-farmOrange transition">Poulets de Chair</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Corps principal -->
+    <main class="max-w-6xl mx-auto px-4 py-10 flex-grow w-full space-y-10">
+        
+        <!-- En-tête de page -->
+        <div class="bg-white rounded-2xl shadow-xl p-8 border border-slate-200">
+            <span class="bg-farmOrange text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">Centre Nutritionnel</span>
+            <h2 class="text-3xl font-extrabold text-farmDarkGreen mt-2">Gestion des Formulations d'Aliments</h2>
+            <p class="text-slate-600 text-sm mt-1">Choisissez ci-dessous entre la formulation économique standard, la matrice professionnelle ou l'outil de composition manuelle sur mesure avec ajout d'ingrédients libres.</p>
+            
+            <!-- Boutons d'onglets -->
+            <div class="flex flex-wrap gap-3 mt-6 border-t pt-6">
+                <button onclick="changerFenetre('eco')" id="btn-eco" class="px-5 py-2.5 rounded-xl font-bold text-sm bg-farmDarkGreen text-white shadow transition">1. Formulation Économique</button>
+                <button onclick="changerFenetre('pro')" id="btn-pro" class="px-5 py-2.5 rounded-xl font-bold text-sm bg-slate-200 text-slate-700 hover:bg-slate-300 transition">2. Formulation Professionnelle</button>
+                <button onclick="changerFenetre('manuel')" id="btn-manuel" class="px-5 py-2.5 rounded-xl font-bold text-sm bg-slate-200 text-slate-700 hover:bg-slate-300 transition">3. Formule Manuelle (Sur Mesure)</button>
+            </div>
+        </div>
+
+        <!-- ================= FENÊTRE 1 : FORMULATION ÉCONOMIQUE ================= -->
+        <div id="fenetre-eco" class="bg-white rounded-2xl shadow-xl p-6 md:p-8 border border-slate-200 space-y-6">
+            <div class="flex items-center justify-between border-b pb-4">
+                <div>
+                    <span class="bg-emerald-100 text-farmGreen text-xs font-bold px-3 py-1 rounded-full uppercase">Standard Local</span>
+                    <h3 class="text-2xl font-bold text-farmDarkGreen mt-1">Formulation Économique de la Provende (Base 100 kg)</h3>
+                </div>
+                <span class="text-3xl">🌾</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse text-sm">
+                        <thead>
+                            <tr class="bg-slate-100 text-slate-700">
+                                <th class="p-3 border-b">Ingrédient</th>
+                                <th class="p-3 border-b">Proportion</th>
+                                <th class="p-3 border-b">Rôle</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr><td class="p-3 font-semibold">Maïs écrasé</td><td class="p-3 text-farmGreen font-bold">55 kg</td><td class="p-3 text-slate-600">Énergie</td></tr>
+                            <tr><td class="p-3 font-semibold">Son de blé/riz</td><td class="p-3 text-farmGreen font-bold">20 kg</td><td class="p-3 text-slate-600">Fibres</td></tr>
+                            <tr><td class="p-3 font-semibold">Concentré Pondeuse</td><td class="p-3 text-farmGreen font-bold">18 kg</td><td class="p-3 text-slate-600">Protéines & Vitamines</td></tr>
+                            <tr><td class="p-3 font-semibold">Coquillage pilé</td><td class="p-3 text-farmGreen font-bold">6 kg</td><td class="p-3 text-slate-600">Calcium</td></tr>
+                            <tr><td class="p-3 font-semibold">Sel de cuisine</td><td class="p-3 text-farmGreen font-bold">1 kg</td><td class="p-3 text-slate-600">Minéraux</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="bg-slate-50 p-6 rounded-xl border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-farmDarkGreen mb-2">Avantages & Utilisation</h4>
+                        <p class="text-sm text-slate-600">Idéal pour réduire les coûts d'exploitation tout en couvrant les besoins nutritionnels de base des sujets en phase de production courante.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= FENÊTRE 2 : FORMULATION PROFESSIONNELLE ================= -->
+        <div id="fenetre-pro" class="hidden bg-white rounded-2xl shadow-xl p-6 md:p-8 border border-slate-200 space-y-6">
+            <div class="flex items-center justify-between border-b pb-4">
+                <div>
+                    <span class="bg-sky-100 text-farmBlue text-xs font-bold px-3 py-1 rounded-full uppercase">Haute Performance</span>
+                    <h3 class="text-2xl font-bold text-farmDarkGreen mt-1">Formulation Professionnelle de la Provende (Mode Pro)</h3>
+                </div>
+                <span class="text-3xl">🔬</span>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse text-sm">
+                        <thead>
+                            <tr class="bg-slate-100 text-slate-700">
+                                <th class="p-3 border-b">Ingrédient Pro</th>
+                                <th class="p-3 border-b">Proportion</th>
+                                <th class="p-3 border-b">Taux Protéique</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-slate-100">
+                            <tr><td class="p-3 font-semibold">Maïs jaune</td><td class="p-3 text-farmBlue font-bold">52 kg</td><td class="p-3 text-slate-600">~8.5%</td></tr>
+                            <tr><td class="p-3 font-semibold">Tourteau de Soja</td><td class="p-3 text-farmBlue font-bold">22 kg</td><td class="p-3 text-slate-600">~44%</td></tr>
+                            <tr><td class="p-3 font-semibold">Son de blé fin</td><td class="p-3 text-farmBlue font-bold">10 kg</td><td class="p-3 text-slate-600">~15%</td></tr>
+                            <tr><td class="p-3 font-semibold">Calcaire / Coquillage</td><td class="p-3 text-farmBlue font-bold">8 kg</td><td class="p-3 text-slate-600">Calcium pur</td></tr>
+                            <tr><td class="p-3 font-semibold">Phosphate Bicalcique</td><td class="p-3 text-farmBlue font-bold">2 kg</td><td class="p-3 text-slate-600">Phosphore</td></tr>
+                            <tr><td class="p-3 font-semibold">Prémixe & Acides Aminés</td><td class="p-3 text-farmBlue font-bold">6 kg</td><td class="p-3 text-slate-600">Équilibre complet</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="bg-sky-50 p-6 rounded-xl border border-sky-200 flex flex-col justify-between">
+                    <div>
+                        <h4 class="font-bold text-farmDarkGreen mb-2">Objectif Zootechnique</h4>
+                        <p class="text-sm text-slate-700">Cette formule intègre des correcteurs azotés et minéraux précis pour viser un taux protéique global optimal.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= FENÊTRE 3 : FORMULE MANUELLE SUR MESURE AVEC AJOUT D'INGRÉDIENTS ================= -->
+        <div id="fenetre-manuel" class="hidden bg-white rounded-2xl shadow-xl p-6 md:p-8 border border-slate-200 space-y-6">
+            <div class="flex items-center justify-between border-b pb-4">
+                <div>
+                    <span class="bg-amber-100 text-farmOrange text-xs font-bold px-3 py-1 rounded-full uppercase">Sur Mesure Interactif</span>
+                    <h3 class="text-2xl font-bold text-farmDarkGreen mt-1">Formule Manuelle : Ajout & Composition Libre</h3>
+                </div>
+                <span class="text-3xl">⚙️</span>
+            </div>
+
+            <p class="text-sm text-slate-600">Cochez les ingrédients souhaités, ajustez leur poids ou <strong>ajoutez vos propres ingrédients personnalisés</strong> avec le bouton ci-dessous.</p>
+
+            <!-- Formulaire d'ajout rapide d'un nouvel ingrédient -->
+            <div class="bg-slate-50 p-4 rounded-xl border border-slate-200 flex flex-col md:flex-row gap-3 items-center">
+                <input type="text" id="nouv_nom" placeholder="Nom du nouvel ingrédient (ex: Tourteau d'arachide)" class="flex-grow p-2 border rounded text-sm w-full">
+                <input type="number" id="nouv_poids" placeholder="Poids (kg)" class="w-full md:w-28 p-2 border rounded text-sm text-center">
+                <input type="number" id="nouv_prix" placeholder="Prix (Ar/kg)" class="w-full md:w-32 p-2 border rounded text-sm text-center">
+                <button onclick="ajouterIngredient()" class="w-full md:w-auto bg-farmOrange hover:bg-orange-600 text-white font-bold px-5 py-2 rounded-xl text-sm transition shadow">
+                    + Ajouter l'ingrédient
+                </button>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Tableau dynamique des ingrédients -->
+                <div class="lg:col-span-2 space-y-4">
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse text-sm">
+                            <thead>
+                                <tr class="bg-slate-100 text-slate-700">
+                                    <th class="p-3 border-b">Ingrédient</th>
+                                    <th class="p-3 border-b">Poids (kg)</th>
+                                    <th class="p-3 border-b">Prix Unit. (Ar/kg)</th>
+                                    <th class="p-3 border-b text-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="liste-ingredients" class="divide-y divide-slate-100">
+                                <!-- Les lignes sont gérées dynamiquement par JavaScript -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- Panneau de Résultat en direct -->
+                <div class="bg-slate-900 text-white p-6 rounded-2xl flex flex-col justify-between shadow-lg">
+                    <div>
+                        <h4 class="text-lg font-bold text-farmOrange mb-4">📊 Bilan de votre Mélange</h4>
+                        <div class="space-y-3 text-sm">
+                            <div class="flex justify-between border-b border-slate-800 pb-2">
+                                <span class="text-slate-400">Poids Total Mélange :</span>
+                                <span id="man_poids" class="font-bold">0 kg</span>
+                            </div>
+                            <div class="flex justify-between border-b border-slate-800 pb-2">
+                                <span class="text-slate-400">Coût Total (MGA) :</span>
+                                <span id="man_total" class="font-bold text-farmOrange text-lg">0 Ar</span>
+                            </div>
+                            <div class="flex justify-between pb-2">
+                                <span class="text-slate-400">Coût de Revient :</span>
+                                <span id="man_kilo" class="font-bold text-emerald-400 text-xl">0 Ar / kg</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-800">
+                        <button onclick="calculerManuel()" class="w-full bg-farmOrange hover:bg-orange-600 text-white font-bold py-3 px-4 rounded-xl transition shadow">
+                            Actualiser les Calculs
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bouton retour -->
+        <div class="text-center pt-4">
+            <a href="index.html" class="inline-block bg-slate-800 hover:bg-slate-900 text-white font-semibold py-3 px-8 rounded-xl transition shadow">← Retour à l'accueil principal</a>
+        </div>
+
+    </main>
+
+    <!-- Pied de page -->
+    <footer class="bg-slate-800 text-slate-400 py-6 border-t border-slate-700 text-center text-sm">
+        <p>&copy; 2026 BeMIRAY FARMER (Madagascar). Module Nutrition Intégré.</p>
+    </footer>
+
+    <!-- Script de gestion dynamique des ingrédients et des onglets -->
+    <script>
+        // Liste initiale des ingrédients modifiables et sélectionnables
+        let ingredients = [
+            { id: 1, nom: "Maïs concassé", poids: 50, prix: 1800, actif: true },
+            { id: 2, nom: "Son de blé / riz", poids: 20, prix: 900, actif: true },
+            { id: 3, nom: "Tourteau de Soja", poids: 15, prix: 3800, actif: true },
+            { id: 4, nom: "Coquillage / Calcaire", poids: 10, prix: 600, actif: true },
+            { id: 5, nom: "Sel & Minéraux", poids: 5, prix: 2500, actif: true }
+        ];
+
+        function initialiserTableau() {
+            let tbody = document.getElementById('liste-ingredients');
+            tbody.innerHTML = '';
+            
+            ingredients.forEach((ing, index) => {
+                let tr = document.createElement('tr');
+                tr.innerHTML = `
+                    <td class="p-3">
+                        <label class="flex items-center space-x-2 font-semibold">
+                            <input type="checkbox" ${ing.actif ? 'checked' : ''} onchange="toggleActif(${index})" class="rounded text-farmOrange">
+                            <span>${ing.nom}</span>
+                        </label>
+                    </td>
+                    <td class="p-3"><input type="number" value="${ing.poids}" id="poids_${index}" oninput="mettreAJourValeurs(${index})" class="w-16 p-1 border rounded text-center font-bold"></td>
+                    <td class="p-3"><input type="number" value="${ing.prix}" id="prix_${index}" oninput="mettreAJourValeurs(${index})" class="w-24 p-1 border rounded text-center"></td>
+                    <td class="p-3 text-center"><button onclick="supprimerIngredient(${index})" class="text-red-500 hover:text-red-700 font-bold text-xs bg-red-50 p-1.5 rounded">Supprimer</button></td>
+                `;
+                tbody.appendChild(tr);
+            });
+            calculerManuel();
+        }
+
+        function toggleActif(index) {
+            ingredients[index].actif = !ingredients[index].actif;
+            calculerManuel();
+        }
+
+        function mettreAJourValeurs(index) {
+            let p = parseFloat(document.getElementById(`poids_${index}`).value) || 0;
+            let pr = parseFloat(document.getElementById(`prix_${index}`).value) || 0;
+            ingredients[index].poids = p;
+            ingredients[index].prix = pr;
+            calculerManuel();
+        }
+
+        function ajouterIngredient() {
+            let nom = document.getElementById('nouv_nom').value.trim();
+            let poids = parseFloat(document.getElementById('nouv_poids').value) || 0;
+            let prix = parseFloat(document.getElementById('nouv_prix').value) || 0;
+
+            if (!nom) {
+                alert("Veuillez saisir un nom pour l'ingrédient.");
+                return;
+            }
+
+            ingredients.push({ id: Date.now(), nom: nom, poids: poids, prix: prix, actif: true });
+            
+            // Vider les champs de saisie
+            document.getElementById('nouv_nom').value = '';
+            document.getElementById('nouv_poids').value = '';
+            document.getElementById('nouv_prix').value = '';
+
+            initialiserTableau();
+        }
+
+        function supprimerIngredient(index) {
+            ingredients.splice(index, 1);
+            initialiserTableau();
+        }
+
+        function calculerManuel() {
+            let totalPoids = 0;
+            let totalPrix = 0;
+
+            ingredients.forEach(ing => {
+                if (ing.actif) {
+                    totalPoids += ing.poids;
+                    totalPrix += (ing.poids * ing.prix);
+                }
+            });
+
+            let prixKilo = totalPoids > 0 ? (totalPrix / totalPoids) : 0;
+
+            document.getElementById('man_poids').innerText = totalPoids + " kg";
+            document.getElementById('man_total').innerText = totalPrix.toLocaleString() + " Ar";
+            document.getElementById('man_kilo').innerText = Math.round(prixKilo).toLocaleString() + " Ar / kg";
+        }
+
+        function changerFenetre(type) {
+            document.getElementById('fenetre-eco').classList.add('hidden');
+            document.getElementById('fenetre-pro').classList.add('hidden');
+            document.getElementById('fenetre-manuel').classList.add('hidden');
+
+            document.getElementById('btn-eco').className = "px-5 py-2.5 rounded-xl font-bold text-sm bg-slate-200 text-slate-700 hover:bg-slate-300 transition";
+            document.getElementById('btn-pro').className = "px-5 py-2.5 rounded-xl font-bold text-sm bg-slate-200 text-slate-700 hover:bg-slate-300 transition";
+            document.getElementById('btn-manuel').className = "px-5 py-2.5 rounded-xl font-bold text-sm bg-slate-200 text-slate-700 hover:bg-slate-300 transition";
+
+            if (type === 'eco') {
+                document.getElementById('fenetre-eco').classList.remove('hidden');
+                document.getElementById('btn-eco').className = "px-5 py-2.5 rounded-xl font-bold text-sm bg-farmDarkGreen text-white shadow transition";
+            } else if (type === 'pro') {
+                document.getElementById('fenetre-pro').classList.remove('hidden');
+                document.getElementById('btn-pro').className = "px-5 py-2.5 rounded-xl font-bold text-sm bg-farmBlue text-white shadow transition";
+            } else if (type === 'manuel') {
+                document.getElementById('fenetre-manuel').classList.remove('hidden');
+                document.getElementById('btn-manuel').className = "px-5 py-2.5 rounded-xl font-bold text-sm bg-farmOrange text-white shadow transition";
+                initialiserTableau();
+            }
+        }
+
+        window.onload = function() {
+            initialiserTableau();
+        };
+    </script>
+</body>
+</html>
